@@ -1,7 +1,7 @@
 # IPv6-Tracer
-CS 653 Semester Project
-Tim Contois
-Jacob Downs
+CS 653 Semester Project:
+Tim Contois, 
+Jacob Downs, 
 Joshua Pikovsky
 
 
