@@ -10,7 +10,7 @@ https://drive.google.com/a/umass.edu/file/d/0B-QXyc0377JqMG0wWkhOTGstRlU/view?us
 
 ## Background​ ​and​ ​Motivation
 
-Initially deployed in 1983 for ARPANET, the Internet Protocol version 4 (or IPv4) is still one of
+	Initially deployed in 1983 for ARPANET, the Internet Protocol version 4 (or IPv4) is still one of
 the core protocols of the modern-day Internet, and continues to route most traffic in the network layer. In
 its earliest documentation, the Internet Protocol was described as a way of transmitting blocks of data
 between sources and destinations identified by a fixed length address. The initial address length was set to
@@ -21,12 +21,13 @@ has exploded, and the common-place nature of mobile phones and laptops has neces
 address assignments than ever foreseen in the days of ARPANET. In 2011, the top-level IP addresses
 were exhausted, and the need for a solution became more urgent. IPv6 was proposed as the new standard,
 and with address lengths increased to 128 bits, the problem would effectively be dealt with.
-While IPv6 seems like an effective and somewhat necessary change, there are still large parts of
+
+	While IPv6 seems like an effective and somewhat necessary change, there are still large parts of
 the Internet that have not adopted the new protocol. IPv4 continues to carry the vast majority of Internet
 traffic, and recent statistics show that the migration to IPv6 is occurring at a very slow pace. Some hosts
 may be hesitant to switch to IPv6 due to fears of slower speeds or decreased quality.
 
-##Project​ ​Scope
+## Project​ ​Scope
 For our semester project, we intend to gain a better understanding of how popular websites and
 autonomous systems are adopting IPv6, and whether or not there are noticeable changes to the Internet
 experience. In particular, we are interested in finding places where IPv6 has already been implemented,
@@ -43,7 +44,7 @@ will collect them, and attempt to find out pertinent information like the device
 occurred, the device’s AS, and the downgrading software.
 
 
-###Related work
+### Related work
 
 *“Beyond Counting: New Perspectives on the Active IPv4 Address Space” -
 	(https://arxiv.org/abs/1606.00360)
