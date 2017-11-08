@@ -1,11 +1,11 @@
 import os, json, pprint, subprocess, argparse
 
-def reader(length):
+def reader(length, experiment):
 
     goalLength = length
     location = "../Results/Analyzed/"
     os.chdir('../Results/Associated')
-    file = "results_A[%s].json" % str(length)
+    file = "results_A[%s]%s.json" % (str(length), str(experiment))
     data = {}
 
     # read in and organize the list of sites we want to experiment on
@@ -13,7 +13,7 @@ def reader(length):
         data = json.load(f)
     
     print("\n______________________cleaner.py______________________\n")
-    print("read in  data dictionary from ", location+file)
+    print("read in  data dictionary from ", location+"/" +file)
     return(data)
 
 def clean(inData):
@@ -93,15 +93,21 @@ def dumper(data, goalLength, experiment):
         json.dump(data, fp, indent=4)
 
 def run():
-    goalLength = 500
+    goalLength = 100
     experiment = -1
     parser = argparse.ArgumentParser()
     parser.add_argument(action="store", dest="goalLength", nargs="?")
     parser.add_argument(action="store", dest="experiment", nargs="?")
     args = parser.parse_args()
 
+    # apply the inputted arguments
+    if (args.goalLength):
+        goalLength = args.goalLength
+    if (args.experiment):
+        experiment = args.experiment
+
     # read in the the data we got from associator.py
-    data = reader(goalLength)
+    data = reader(goalLength, experiment)
 
     # find "preferred objects for all of the data"
     data = clean(data)

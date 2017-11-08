@@ -28,10 +28,14 @@ def dumper(data):
 
 
 def run():
-    goalLength = 500
+    goalLength = 100
     parser = argparse.ArgumentParser()
     parser.add_argument(action="store", dest="goalLength", nargs="?")
     args = parser.parse_args()
+
+    # apply the inputted arguments
+    if (args.goalLength):
+        goalLength = args.goalLength
 
     print("HEHEHEE", goalLength)
 

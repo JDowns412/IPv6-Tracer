@@ -1,10 +1,10 @@
 import os, json, pprint, subprocess, time, socket, re, argparse
 
-def reader(length):
+def reader(length, experiment):
 
     goalLength = length
     os.chdir('../Results/Cleaned')
-    file = "results_A_C[%s].json" % length
+    file = "results_A_C[%s]%s.json" % (str(length), str(experiment))
     location = "../Results/Cleaned"
     data = {}
 
@@ -63,7 +63,7 @@ def get(domain, data, version):
     else:
         sock = socket.socket(socket.AF_INET6, socket.SOCK_STREAM)
         # start the socket connection
-        print(data["valid"][domain]["best6"])
+        # print(data["valid"][domain]["best6"])
         sock.connect((data["valid"][domain]["best6"], 80))
     
     # construct the message we'll be sending
@@ -90,13 +90,13 @@ def get(domain, data, version):
 
 def calibrate6(data, domain):
 
-    pprint.pprint(data["valid"][domain])
+    # pprint.pprint(data["valid"][domain])
 
     print("\nRunning IPv6 calibration on ", domain)
     out = ""
     best = 999999999
     for six in data["valid"][domain]["sixes"]:
-        print(six)
+        # print(six)
         sock = socket.socket(socket.AF_INET6, socket.SOCK_STREAM)
         
         # start the socket connection
@@ -141,23 +141,26 @@ def trace(inData, iterations):
             for itr in range(iterations):
                 data["valid"][domain]["results"][4].append(get(domain, data, 4))
             
-            # # run connections for IPv6 (if the domain has it)
-            # if (data["valid"][domain]["6Support"]):
-            #     data["valid"][domain]["results"][6] = []
-            #     print("Tracing %s with IPv6" % (domain))
+            # run connections for IPv6 (if the domain has it)
+            if (data["valid"][domain]["6Support"]):
+                data["valid"][domain]["results"][6] = []
+                print("Tracing %s with IPv6" % (domain))
 
-            #     # we need to calibrate the IPv6 first (this is automatic with IPv4, 
-            #     # but not 6 since python's socket module was throwing errors at me)
-            #     data["valid"][domain]["best6"] = calibrate6(data, domain)
-            #     for itr in range(iterations):
-            #         data["valid"][domain]["results"][6].append(get(domain, data, 6))
-            # else:
-            #     print("%s does not support IPv6." % domain)
+                # we need to calibrate the IPv6 first (this is automatic with IPv4, 
+                # but not 6 since python's socket module was throwing errors at me)
+                data["valid"][domain]["best6"] = calibrate6(data, domain)
+                for itr in range(iterations):
+                    data["valid"][domain]["results"][6].append(get(domain, data, 6))
+            else:
+                print("%s does not support IPv6." % domain)
 
         except Exception as exception:
             name = repr(exception).split('(')[0]
-            print("%s exception encountered while tracing %s" % (name, domain))
-            data["exceptions"][domain] = "TRACE... " + name
+            if (name == "OSError"):
+                print ("Having IPv6 connectivity issues with %s. Check your network connection" % domain)
+            else:
+                print("%s exception encountered while tracing %s" % (name, domain))
+                data["exceptions"][domain] = "TRACE... " + name
 
     # mark the data as "T" for "Traced/Timed"
     data["progress"].append("T")
@@ -186,15 +189,21 @@ def dumper(data, goalLength, experiment):
 
 
 def run():
-    goalLength = 500
+    goalLength = 100
     experiment = -1
     parser = argparse.ArgumentParser()
     parser.add_argument(action="store", dest="goalLength", nargs="?")
     parser.add_argument(action="store", dest="experiment", nargs="?")
     args = parser.parse_args()
 
+    # apply the inputted arguments
+    if (args.goalLength):
+        goalLength = args.goalLength
+    if (args.experiment):
+        experiment = args.experiment
+
     # read in the the data we got from associator.py
-    data = reader(goalLength)
+    data = reader(goalLength, experiment)
 
     # go to each of the hostnames and find an object that we can use 
     # for collecting results on

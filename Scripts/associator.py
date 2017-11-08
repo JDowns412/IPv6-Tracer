@@ -53,7 +53,7 @@ from bs4 import BeautifulSoup
 def reader(length):
 
     goalLength = length
-    file = "top%dEven" % goalLength
+    file = "top%sEven" % str(goalLength)
     location = "../Data/" + file + ".json"
     data = {}
 
@@ -149,19 +149,25 @@ def dumper(data, goalLength, experiment):
 
     fileName += ".json"
 
-    print("\ndumping results to ../Results/Associated", fileName)
+    print("\ndumping results to ../Results/Associated/", fileName)
 
     with open(fileName, 'w') as fp:
         json.dump(data, fp, indent=4)
 
 
 def run():
-    goalLength = 500
+    goalLength = 100
     experiment = -1
     parser = argparse.ArgumentParser()
     parser.add_argument(action="store", dest="goalLength", nargs="?")
     parser.add_argument(action="store", dest="experiment", nargs="?")
     args = parser.parse_args()
+
+    # apply the inputted arguments
+    if (args.goalLength):
+        goalLength = args.goalLength
+    if (args.experiment):
+        experiment = args.experiment
 
     # read in the list of hostnames we want to analyze
     sites = reader(goalLength)
