@@ -63,7 +63,7 @@ def run():
     dumper(tracker)
 
     # shutdown windows (Used to test models overnight)
-    subprocess.call(["shutdown", "/s"])
+    # subprocess.call(["shutdown", "/s"])
 
 if __name__ == "__main__":
     run()

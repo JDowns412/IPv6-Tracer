@@ -85,7 +85,7 @@ def get(domain, data, version):
     # close the socket once we're done with it
     sock.close()
 
-    return timer
+    return (timer, len(response))
 
 
 def calibrate6(data, domain):
