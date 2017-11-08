@@ -1,111 +1,214 @@
-'''
-Overall functionality goal: 
--Take in a list of addresses, output a JSON that contains stats 
-    collected on each hostname concerning IPv4/IPv6 support.
+import os, json, pprint, subprocess, time, socket, re, argparse
 
-reader()
-    -read in the list of websites from the Data directory
-        -(parse through things if necessary)
-    -create the Data dictionary and store them in it
-    -return(data)
+def reader(length):
 
-obj_associator(data)
-    -For each name in the inputted list run an IPv4 connection to it, and 
-     determine an object from the webpage that will be used for 
-      benchmarking the speed of the connection
-    -Use some sort of requests library to request the page
-    -Parse through the page and find some object (a .jpg, .png, .gif etc) 
-     to associate with that link. 
-        -Output an error if this isn’t possible
-    -Then, add the name of this object to the dictionary of the parsed in hostnames.
-    -Now, we can refer back to this dictionary and request that object in a 
-     later method (the one doing the traceroutes, or other things)
-    -Create a list called progress that will keep track of whatever things 
-     were done to the data.
-        -Add an ‘A’ to mark the data as “associated with an object”
-    -Return (data, progress)
-
-dns_looker(data, progress)
-    -For each hostname in the data dictionary, run AAAA DNS lookups and add an entry 
-     for every hostname on whether or not it has an IPv6 address associated with it
-    -Use either a DNS library or the requests module to run DNS lookups and parse 
-     the results to determine if an AAAA address is present for each site
-    -Set the “ipv6” boolean for each site in the dictionary
-    -Add a ‘D’ to mark the data as “having an IPv6 address or not in DNS”
-    -Return (data, progress)
-
-tracer(data, progress)
-    -Run IPv4/6 traces on the websites and time them 
-        -Request the objects associated by obj_associator in both IPv4/6, using either 
-         some requests library, or manually request it on the command line
-        -Incorporate some sort of timer, start it right before the request, and end 
-         it right after the request. Add the timings to the data dictionary
-    -Add a ‘T’ to mark the data as “traced for IPv4/6”
-    -Return (data, progress)
-
-dumper(data, progress)
-    -Generate a filename for the outputted JSON based off of the progress list
-    -Dump the json into the Data directory
-'''
-
-import os, json
-
-def reader():
-    location = "../Data/[fileName]"
+    goalLength = length
+    os.chdir('../Results/Cleaned')
+    file = "results_A_C[%s].json" % length
+    location = "../Results/Cleaned"
     data = {}
+
+    # read in and organize the list of sites we want to experiment on
+    with open(file, "r") as f:
+        data = json.load(f)
+    
+    print("\n______________________analyzer.py______________________\n")
+    print("read in  data dictionary from ", location+file)
     return(data)
 
 
+def dns_looker(inData):
 
-def obj_associator(data):
-    progress = []
-    return (data, progress)
+    data = inData
+
+    count = 0
+
+    # iterate through every domain in data["valid"], 
+    # since those are the only applicable domains to this experiment
+    for domain, val in data["valid"].items():
+        # run the IPv6 DNS lookup on the domain
+        proc = subprocess.Popen(["nslookup", "-q=aaaa", domain], stdout=subprocess.PIPE, stderr=subprocess.PIPE, bufsize=1)
+        # parse the response
+        res = str(proc.communicate())
+        
+        # store whether or not the website supports IPv6 or not
+        data["valid"][domain]["6Support"] = ("***" not in res)
+
+        # keep count of how many sites don;t support IPv6
+        if ("***" in res):
+            count += 1
+        else:
+            # find all the IPv6 addresses for this domain, to be used later
+            temp = re.findall(r' [a-z0-9]*[:[a-z0-9]*]*\\', res)[0:-1]
+            sixes = []
+            for six in temp:
+                sixes.append(six[1:-2])
+
+            data["valid"][domain]["sixes"] = sixes
 
 
+    print("\n%d/%d sites don't support IPv6\n" % (count, len(data["valid"])))
 
-def dns_looker(data, progress):
+    data["progress"].append("D")
 
-    return (data, progress)
-
-
-
-def tracer(data, progress):
-
-    return (data, progress)
+    return (data)
 
 
+def get(domain, data, version):
+# initialize the proper socket version based off of the passed in version
+    if (version == 4):
+        sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+        # start the socket connection
+        sock.connect((domain, 80))
+    else:
+        sock = socket.socket(socket.AF_INET6, socket.SOCK_STREAM)
+        # start the socket connection
+        print(data["valid"][domain]["best6"])
+        sock.connect((data["valid"][domain]["best6"], 80))
+    
+    # construct the message we'll be sending
+    message =  'GET ' + data["valid"][domain]["preferred"] + ' HTTP/1.1\r\n'
+    message += 'Host: ' + domain + '\r\n'
+    message += 'Connection: keep-alive\r\n'
+    message += 'User-Agent: Mozilla/5.0\r\n'
+    #this double CR-LF is the standard HTTP way of indicating the end of any HTTP header fields
+    message += '\r\n'
+    
+    #record the time the request takes
+    start = time.time()
+    sock.send(message.encode('utf-8'))
+    # receive the response and parse it into it's different header fields
+    response = sock.recv(1024)
+    # record the time it takes for the object to be fetched (in seconds)
+    timer = time.time() - start
 
-def dumper(data, progress):
+    # close the socket once we're done with it
+    sock.close()
+
+    return timer
+
+
+def calibrate6(data, domain):
+
+    pprint.pprint(data["valid"][domain])
+
+    print("\nRunning IPv6 calibration on ", domain)
+    out = ""
+    best = 999999999
+    for six in data["valid"][domain]["sixes"]:
+        print(six)
+        sock = socket.socket(socket.AF_INET6, socket.SOCK_STREAM)
+        
+        # start the socket connection
+        sock.connect((six, 80))
+
+        # construct the message we'll be sending
+        message =  'GET ' + data["valid"][domain]["preferred"] + ' HTTP/1.1\r\n'
+        message += 'Host: ' + domain + '\r\n'
+        message += 'Connection: keep-alive\r\n'
+        message += 'User-Agent: Mozilla/5.0\r\n'
+        #this double CR-LF is the standard HTTP way of indicating the end of any HTTP header fields
+        message += '\r\n'
+        
+        #record the time the request takes
+        start = time.time()
+        sock.send(message.encode('utf-8'))
+        # receive the response and parse it into it's different header fields
+        response = sock.recv(1024)
+        # record the time it takes for the object to be fetched (in seconds)
+        timer = time.time() - start
+
+        if (timer < best):
+            best = timer
+            out = six
+
+        sock.close()
+
+    return out
+
+
+def trace(inData, iterations):
+    data = inData
+
+    # do traces for every domain
+    count = 0
+    for domain, val in data["valid"].items():
+        count += 1
+        try:
+            data["valid"][domain]["results"] = {4 : []}
+            # run connections for each IPv4
+            print("Tracing %d/%d %s with IPv4" % (count, len(data["valid"]), domain))
+            for itr in range(iterations):
+                data["valid"][domain]["results"][4].append(get(domain, data, 4))
+            
+            # # run connections for IPv6 (if the domain has it)
+            # if (data["valid"][domain]["6Support"]):
+            #     data["valid"][domain]["results"][6] = []
+            #     print("Tracing %s with IPv6" % (domain))
+
+            #     # we need to calibrate the IPv6 first (this is automatic with IPv4, 
+            #     # but not 6 since python's socket module was throwing errors at me)
+            #     data["valid"][domain]["best6"] = calibrate6(data, domain)
+            #     for itr in range(iterations):
+            #         data["valid"][domain]["results"][6].append(get(domain, data, 6))
+            # else:
+            #     print("%s does not support IPv6." % domain)
+
+        except Exception as exception:
+            name = repr(exception).split('(')[0]
+            print("%s exception encountered while tracing %s" % (name, domain))
+            data["exceptions"][domain] = "TRACE... " + name
+
+    # mark the data as "T" for "Traced/Timed"
+    data["progress"].append("T")
+    return (data)
+
+
+def dumper(data, goalLength, experiment):
 
     fileName = ("results")
-    os.chdir('../Results')
+    os.chdir('../Analyzed')
 
-    for elem in progress:
+    for elem in data["progress"]:
         fileName += "_" + elem
+    fileName += "[" + str(goalLength) + "]"
+
+    # if we're actually setting the experiment number, probably through runner.py
+    if (experiment != -1):
+        fileName += str(experiment)
+
     fileName += ".json"
+
+    print("\ndumping results to ../Results/Analyzed", fileName)
 
     with open(fileName, 'w') as fp:
         json.dump(data, fp, indent=4)
 
 
 def run():
-    # read in the list of hostnames we want to analyze
-    data = reader()
+    goalLength = 100
+    experiment = -1
+    parser = argparse.ArgumentParser()
+    parser.add_argument(action="store", dest="goalLength", nargs="?")
+    parser.add_argument(action="store", dest="experiment", nargs="?")
+    args = parser.parse_args()
+
+    # read in the the data we got from associator.py
+    data = reader(goalLength)
 
     # go to each of the hostnames and find an object that we can use 
     # for collecting results on
-    data, progress = obj_associator(data)
+    data = dns_looker(data)
 
-    # determine if each hostname supports IPv6 or not
-    data, progress = dns_looker(data, progress)
 
-    # evaluate access times for IPv4/6 on each host
-    data, progress = tracer(data, progress)
+    iterations = 10
+    # compare access speeds for the different sites
+    data = trace(data, iterations)
 
     # dump our results out to a JSON to be analyzed later
-    dumper(data, progress)
+    dumper(data, goalLength, experiment)
 
 
 
 if __name__ == "__main__":
-    run()
+    run()    
