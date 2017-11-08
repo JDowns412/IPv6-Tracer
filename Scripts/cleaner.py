@@ -93,7 +93,7 @@ def dumper(data, goalLength, experiment):
         json.dump(data, fp, indent=4)
 
 def run():
-    goalLength = 100
+    goalLength = 500
     experiment = -1
     parser = argparse.ArgumentParser()
     parser.add_argument(action="store", dest="goalLength", nargs="?")
