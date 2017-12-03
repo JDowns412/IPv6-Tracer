@@ -32,33 +32,33 @@ def clean(inData):
                 break
             # second best case scenario, this is likely the same scenario as above, 
             # just missing a / from the parsing process (HTML is sloppy)
-            elif (obj[0].isalpha()):
-                data["valid"][domain]["preferred"] = "/"+ obj
-                data["valid"][domain]["dirty"] = False
-                break
-            # third best scenario: just like the first, just with "./ at the beginning"
-            if (obj[0] == "." and obj[1] == "/" and obj[2].isalpha()):
-                data["valid"][domain]["preferred"] = obj[1:]
-                data["valid"][domain]["dirty"] = False
-                break
-            # fourth case best scenario: the object is a full URL that contains the domain name, 
-            # so it's probably from the domain itself
-            elif (domain in obj):
-                data["valid"][domain]["preferred"] = obj
-                data["valid"][domain]["dirty"] = False
-                break
+            # elif (obj[0].isalpha()):
+            #     data["valid"][domain]["preferred"] = "/"+ obj
+            #     data["valid"][domain]["dirty"] = False
+            #     break
+            # # third best scenario: just like the first, just with "./ at the beginning"
+            # if (obj[0] == "." and obj[1] == "/" and obj[2].isalpha()):
+            #     data["valid"][domain]["preferred"] = obj[1:]
+            #     data["valid"][domain]["dirty"] = False
+            #     break
+            # # fourth case best scenario: the object is a full URL that contains the domain name, 
+            # # so it's probably from the domain itself
+            # elif (domain in obj):
+            #     data["valid"][domain]["preferred"] = obj
+            #     data["valid"][domain]["dirty"] = False
+            #     break
 
     # make a second run through to add in the less than preferable choices if 
     # there were no good objects found above. These cases are where there are 
     # url's that start with "//", and usually come from some 
     # CDN associated with the website.
-    for domain, val in data["valid"].items():
-        if (data["valid"][domain]["dirty"]):
-            for obj in val["objects"]:
-                if (obj[0:2] == "//" and obj[2].isalpha()):
-                    data["valid"][domain]["preferred"] = obj
-                    data["valid"][domain]["dirty"] = False
-                    break
+    # for domain, val in data["valid"].items():
+    #     if (data["valid"][domain]["dirty"]):
+    #         for obj in val["objects"]:
+    #             if (obj[0:2] == "//" and obj[2].isalpha()):
+    #                 data["valid"][domain]["preferred"] = obj
+    #                 data["valid"][domain]["dirty"] = False
+    #                 break
 
     # notify of any remaining dirty domains 
     # (ones that don't have a nice, clean object to request)

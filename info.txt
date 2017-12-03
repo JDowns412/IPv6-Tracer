@@ -1,0 +1,32 @@
+parser 
+	- gets list of domains
+
+associator 
+	- objects with each domain (png, etc.)
+	- {"valid", "exception" : {"domain" : {objects} } }
+
+cleaner
+	- http is sloppy
+	- look for easy extensions (/etc/img/___.jpg)
+	- adds "preferred" to dictionary for each domain
+
+analyzer
+	- real work is done
+	- check if supports IPv6 (DNS lookup)
+	- adds "6support" to dictionary
+	- pulls out IPv6 addresses
+
+_A : associated
+_C : cleaned
+_D : DNS lookup
+_T : traced and timed (analyzed)
+
+hoping object fits in one packet
+
+how to run: python3 runner.py 100/500
+
+TODO:
+- run on IPv6
+- graph - analyzing time differences
+- write-up
+- submit

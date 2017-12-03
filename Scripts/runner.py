@@ -42,17 +42,17 @@ def run():
     tracker = reader()
 
     # call the associator script
-    subprocess.call(["python", "associator.py", str(goalLength), str(tracker["count"])])
+    subprocess.call(["python3", "associator.py", str(goalLength), str(tracker["count"])])
 
     os.chdir('../Scripts')
 
     # call the cleaner script
-    subprocess.call(["python", "cleaner.py", str(goalLength), str(tracker["count"])])
+    subprocess.call(["python3", "cleaner.py", str(goalLength), str(tracker["count"])])
 
     os.chdir('../Scripts')
 
     # call the analysis script
-    subprocess.call(["python", "analyzer.py", str(goalLength), str(tracker["count"])])
+    subprocess.call(["python3", "analyzer.py", str(goalLength), str(tracker["count"])])
 
     os.chdir('../Scripts')
 

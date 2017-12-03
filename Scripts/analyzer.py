@@ -64,7 +64,12 @@ def get(domain, data, version):
         sock = socket.socket(socket.AF_INET6, socket.SOCK_STREAM)
         # start the socket connection
         # print(data["valid"][domain]["best6"])
-        sock.connect((data["valid"][domain]["best6"], 80))
+        # sock.connect((data["valid"][domain]["best6"], 80, 0, 0))
+        addrs = socket.getaddrinfo(domain, 80, socket.AF_INET6, 0, socket.SOL_TCP)
+        # print(addrs)
+        sockaddr = addrs[0][-1]
+        # print(sockaddr)
+        sock.connect(sockaddr)
     
     # construct the message we'll be sending
     message =  'GET ' + data["valid"][domain]["preferred"] + ' HTTP/1.1\r\n'
@@ -74,9 +79,10 @@ def get(domain, data, version):
     #this double CR-LF is the standard HTTP way of indicating the end of any HTTP header fields
     message += '\r\n'
     
+    sock.send(message.encode('utf-8'))
+
     #record the time the request takes
     start = time.time()
-    sock.send(message.encode('utf-8'))
     # receive the response and parse it into it's different header fields
     response = sock.recv(1024)
     # record the time it takes for the object to be fetched (in seconds)
@@ -88,43 +94,48 @@ def get(domain, data, version):
     return (timer, len(response))
 
 
-def calibrate6(data, domain):
+# def calibrate6(data, domain):
 
-    # pprint.pprint(data["valid"][domain])
+#     # pprint.pprint(data["valid"][domain])
 
-    print("\nRunning IPv6 calibration on ", domain)
-    out = ""
-    best = 999999999
-    for six in data["valid"][domain]["sixes"]:
-        # print(six)
-        sock = socket.socket(socket.AF_INET6, socket.SOCK_STREAM)
+#     print("\nRunning IPv6 calibration on ", domain)
+#     out = ""
+#     best = 999999999
+#     for six in data["valid"][domain]["sixes"]:
+#         # print(six)
+#         sock = socket.socket(socket.AF_INET6, socket.SOCK_STREAM)
         
-        # start the socket connection
-        sock.connect((six, 80))
+#         # start the socket connection
+#         # sock.connect((six, 80, 0, 0))
+#         addrs = socket.getaddrinfo(six, 80, socket.AF_INET6, 0, socket.SOL_TCP)
+#         # print(addrs)
+#         sockaddr = addrs[0][-1]
+#         # print(sockaddr)
+#         sock.connect(sockaddr)
 
-        # construct the message we'll be sending
-        message =  'GET ' + data["valid"][domain]["preferred"] + ' HTTP/1.1\r\n'
-        message += 'Host: ' + domain + '\r\n'
-        message += 'Connection: keep-alive\r\n'
-        message += 'User-Agent: Mozilla/5.0\r\n'
-        #this double CR-LF is the standard HTTP way of indicating the end of any HTTP header fields
-        message += '\r\n'
+#         # construct the message we'll be sending
+#         message =  'GET ' + data["valid"][domain]["preferred"] + ' HTTP/1.1\r\n'
+#         message += 'Host: ' + domain + '\r\n'
+#         message += 'Connection: keep-alive\r\n'
+#         message += 'User-Agent: Mozilla/5.0\r\n'
+#         #this double CR-LF is the standard HTTP way of indicating the end of any HTTP header fields
+#         message += '\r\n'
         
-        #record the time the request takes
-        start = time.time()
-        sock.send(message.encode('utf-8'))
-        # receive the response and parse it into it's different header fields
-        response = sock.recv(1024)
-        # record the time it takes for the object to be fetched (in seconds)
-        timer = time.time() - start
+#         #record the time the request takes
+#         start = time.time()
+#         sock.send(message.encode('utf-8'))
+#         # receive the response and parse it into it's different header fields
+#         response = sock.recv(1024)
+#         # record the time it takes for the object to be fetched (in seconds)
+#         timer = time.time() - start
 
-        if (timer < best):
-            best = timer
-            out = six
+#         if (timer < best):
+#             best = timer
+#             out = six
 
-        sock.close()
+#         sock.close()
 
-    return out
+#     return out
 
 
 def trace(inData, iterations):
@@ -133,34 +144,35 @@ def trace(inData, iterations):
     # do traces for every domain
     count = 0
     for domain, val in data["valid"].items():
-        count += 1
-        try:
-            data["valid"][domain]["results"] = {4 : []}
-            # run connections for each IPv4
-            print("Tracing %d/%d %s with IPv4" % (count, len(data["valid"]), domain))
-            for itr in range(iterations):
-                data["valid"][domain]["results"][4].append(get(domain, data, 4))
-            
-            # run connections for IPv6 (if the domain has it)
-            if (data["valid"][domain]["6Support"]):
-                data["valid"][domain]["results"][6] = []
-                print("Tracing %s with IPv6" % (domain))
-
-                # we need to calibrate the IPv6 first (this is automatic with IPv4, 
-                # but not 6 since python's socket module was throwing errors at me)
-                data["valid"][domain]["best6"] = calibrate6(data, domain)
+        if "preferred" in data["valid"][domain]:
+            count += 1
+            try:
+                data["valid"][domain]["results"] = {4 : []}
+                # run connections for each IPv4
+                print("Tracing %d/%d %s with IPv4" % (count, len(data["valid"]), domain))
                 for itr in range(iterations):
-                    data["valid"][domain]["results"][6].append(get(domain, data, 6))
-            else:
-                print("%s does not support IPv6." % domain)
+                    data["valid"][domain]["results"][4].append(get(domain, data, 4))
+                
+                # run connections for IPv6 (if the domain has it)
+                if (data["valid"][domain]["6Support"]):
+                    data["valid"][domain]["results"][6] = []
+                    print("Tracing %s with IPv6" % (domain))
 
-        except Exception as exception:
-            name = repr(exception).split('(')[0]
-            if (name == "OSError"):
-                print ("Having IPv6 connectivity issues with %s. Check your network connection" % domain)
-            else:
-                print("%s exception encountered while tracing %s" % (name, domain))
-                data["exceptions"][domain] = "TRACE... " + name
+                    # we need to calibrate the IPv6 first (this is automatic with IPv4, 
+                    # but not 6 since python's socket module was throwing errors at me)
+                    # data["valid"][domain]["best6"] = calibrate6(data, domain)
+                    for itr in range(iterations):
+                        data["valid"][domain]["results"][6].append(get(domain, data, 6))
+                else:
+                    print("%s does not support IPv6." % domain)
+
+            except Exception as exception:
+                name = repr(exception).split('(')[0]
+                if (name == "OSError"):
+                    print ("Having IPv6 connectivity issues with %s. Check your network connection" % domain)
+                else:
+                    print("%s exception encountered while tracing %s" % (name, domain))
+                    data["exceptions"][domain] = "TRACE... " + name
 
     # mark the data as "T" for "Traced/Timed"
     data["progress"].append("T")
