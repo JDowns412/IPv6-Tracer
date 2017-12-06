@@ -32,6 +32,40 @@ def jgraph(data):
 	plt.legend(loc='upper right')
 	plt.show()
 
+
+def jgraph_cdf(data):
+	valids = data.get("valid")
+	ipv4_results = []
+	ipv6_results = []
+	for k,v in valids.items():
+		if "results" in v:
+			results = v["results"]
+			#print(results)
+			if len(results["4"])>1:
+				res = []
+				for x,y in results["4"]:
+					res.append(x)
+				ipv4_results.append(np.mean(res))
+			if "6" in results.keys() and len(results["6"])>1:
+				res = []
+				for x,y in results["6"]:
+					res.append(x)
+				ipv6_results.append(np.mean(res))
+	bins = np.linspace(0,.1)
+	val1, bas1 = np.histogram(ipv4_results,bins)
+	val2, bas2 = np.histogram(ipv6_results,bins)
+	cum1 = np.cumsum(val1)
+	cum2 = np.cumsum(val2)
+	plt.plot(bas1[:-1],cum1, label="IPv4")
+	plt.plot(bas2[:-1],cum2, label = "IPv6")
+	plt.legend(loc='upper right')
+	plt.ylabel("CDF (%)")
+	plt.xlabel("request time (s)")
+
+	# plt.xticks(numpy.arange(min(ipv4_results), max(ipv4_results)+1, .01))
+	plt.legend(loc='upper right')
+	plt.show()
+
 def tgraph(data):
 	# csv_results: domain, ipv4 mean time, ipv6 mean time
 	csv_results = []
@@ -66,6 +100,6 @@ def tstats(data):
 if __name__ == '__main__':
 	with open('../Results/Analyzed/results_A_C_D_T[500]16.json') as data_file:
 		data = json.load(data_file)
-		# jgraph(data)
+		jgraph_cdf(data)
 		# tgraph(data)
 		tstats(data)
