@@ -60,8 +60,8 @@ def jgraph_cdf(data):
 	plt.plot(bas2[:-1],cum2, label = "IPv6")
 	plt.legend(loc='upper right')
 	plt.ylabel("CDF (%)")
-	plt.xlabel("request time (s)")
-
+	plt.xlabel("response time (s)")
+	plt.title("Response Time CDF")
 	# plt.xticks(numpy.arange(min(ipv4_results), max(ipv4_results)+1, .01))
 	plt.legend(loc='upper right')
 	plt.show()
