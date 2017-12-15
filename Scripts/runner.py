@@ -1,6 +1,6 @@
 import subprocess, json, os, argparse
 
-def reader():
+def reader(experiment):
 
     file = "tracker.json"
     location = "../Results/" + file
@@ -15,15 +15,17 @@ def reader():
 
 
 
-def dumper(data):
+def dumper(data, experiment):
+    with open("Experiment %s.log" % str(experiment), 'a') as log:
 
-    fileName = ("tracker.json")
-    os.chdir('../Results')
+        fileName = ("tracker.json")
+        os.chdir('../Results')
 
-    print("\nTracker JSON has been updated. Terminating...")
+        print("\nTracker JSON has been updated. Terminating...")
+        log.write("\nTracker JSON has been updated. Terminating...")
 
-    with open(fileName, 'w') as fp:
-        json.dump(data, fp, indent=4)
+        with open(fileName, 'w') as fp:
+            json.dump(data, fp, indent=4)
 
 
 
@@ -67,7 +69,7 @@ def run():
     # (we can't get to this point if we hung on some weird error and never 
     # terminated the experiment)
     tracker["count"] += 1
-    dumper(tracker)
+    dumper(tracker, tracker["count"]-1)
 
     # shutdown windows (Used to test models overnight)
     # subprocess.call(["shutdown", "/s"])

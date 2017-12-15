@@ -50,109 +50,117 @@ dumper(data, progress)
 import os, json, pprint, requests, re, urllib.request, argparse
 from bs4 import BeautifulSoup
 
-def reader(length):
+def reader(length, experiment):
+    with open("../Logs/Experiment %s.log" % str(experiment), 'a') as log:
+        goalLength = length
+        file = "top%sEven" % str(goalLength)
+        location = "../Data/" + file + ".json"
+        data = {}
 
-    goalLength = length
-    file = "top%sEven" % str(goalLength)
-    location = "../Data/" + file + ".json"
-    data = {}
-
-    # read in and organize the list of sites we want to experiment on
-    with open(location, "r") as f:
-        data = json.load(f)
-    sites = data["sites"]
-    
-    print("\n______________________associator.py______________________\n")
-    print("read in %d sites from %s" %(len(sites), location))
-    return(sites)
+        # read in and organize the list of sites we want to experiment on
+        with open(location, "r") as f:
+            data = json.load(f)
+        sites = data["sites"]
+        
+        print("\n______________________associator.py______________________\n")
+        print("read in %d sites from %s" %(len(sites), location))
+        log.write("\n______________________associator.py______________________\n")
+        log.write("read in %d sites from %s" %(len(sites), location))
+        return(sites)
 
 
 # due to the volatile nature of website content, this should be run
 # every time we wan to run an experiment
-def obj_associator(sites):
-    data = {"exceptions" : {}, "zeros" : [], "valid": {}, "progress" : ["A"]}
+def obj_associator(sites, experiment):
+    with open("../Logs/Experiment %s.log" % str(experiment), 'a') as log:
+        data = {"exceptions" : {}, "zeros" : [], "valid": {}, "progress" : ["A"]}
 
-    for dom in range(len(sites)):
+        for dom in range(len(sites)):
 
-        # added this line because the script was hanging on these sites
-        if (sites[dom] != "jabong.com" and sites[dom] != "bestbuy.com"):
-            try:
-                # print (dom)
-                # response = requests.get()
-                domain = "http://www." + sites[dom]
-                print("\nGetting %d/%d: %s" % (dom+1, len(sites), domain))
+            # added this line because the script was hanging on these sites
+            if (sites[dom] != "jabong.com" and sites[dom] != "bestbuy.com"):
+                try:
+                    # print (dom)
+                    # response = requests.get()
+                    domain = "http://www." + sites[dom]
+                    print("\nGetting %d/%d: %s" % (dom+1, len(sites), domain))
+                    log.write("\nGetting %d/%d: %s" % (dom+1, len(sites), domain))
 
-                req = urllib.request.Request(domain, headers={'User-Agent': 'Mozilla/5.0'})
+                    req = urllib.request.Request(domain, headers={'User-Agent': 'Mozilla/5.0'})
 
-                html_page = urllib.request.urlopen(req)
-                soup = BeautifulSoup(html_page, "lxml")
+                    html_page = urllib.request.urlopen(req)
+                    soup = BeautifulSoup(html_page, "lxml")
 
-                # pprint.pprint(soup.prettify())
+                    # pprint.pprint(soup.prettify())
 
-                objects = []
+                    objects = []
 
-                # iterate through all the types of website objects that 
-                # we're willing to use for our future requests
+                    # iterate through all the types of website objects that 
+                    # we're willing to use for our future requests
 
-                types = ["ico", "jpg", "jpeg", "png", "gif", "avi", "doc", "mp4", "mp3", "mpg", "mpeg", "txt", "wav", "pdf", "tiff", "mov"]
-                tags = ["img", "meta", "link"]
-                for tag in tags:
-                    for obj in soup.findAll(tag):
-                        # print("FOUND")
-                        if (tag == "img"):
-                            o = obj.get('src')
-                            if (o is not None and (o[-3:] in types or o[-4:] in types)):
-                                # TODO: check if there is a domain name at the start of the link 
-                                objects.append(o)
-                        elif (tag == "meta"):
-                            o = obj.get('content')
-                            if (o is not None and (o[-3:] in types or o[-4:] in types)):
-                                # TODO: check if there is a domain name at the start of the link 
-                                objects.append(o)
-                        elif (tag == "link"):
-                            o = obj.get('href')
-                            if (o is not None and (o[-3:] in types or o[-4:] in types)):
-                                # TODO: check if there is a domain name at the start of the link 
-                                objects.append(o)
-                        # print(o[-3:])
+                    types = ["ico", "jpg", "jpeg", "png", "gif", "avi", "doc", "mp4", "mp3", "mpg", "mpeg", "txt", "wav", "pdf", "tiff", "mov"]
+                    tags = ["img", "meta", "link"]
+                    for tag in tags:
+                        for obj in soup.findAll(tag):
+                            # print("FOUND")
+                            if (tag == "img"):
+                                o = obj.get('src')
+                                if (o is not None and (o[-3:] in types or o[-4:] in types)):
+                                    # TODO: check if there is a domain name at the start of the link 
+                                    objects.append(o)
+                            elif (tag == "meta"):
+                                o = obj.get('content')
+                                if (o is not None and (o[-3:] in types or o[-4:] in types)):
+                                    # TODO: check if there is a domain name at the start of the link 
+                                    objects.append(o)
+                            elif (tag == "link"):
+                                o = obj.get('href')
+                                if (o is not None and (o[-3:] in types or o[-4:] in types)):
+                                    # TODO: check if there is a domain name at the start of the link 
+                                    objects.append(o)
+                            # print(o[-3:])
 
-                if (len(objects) == 0):
-                    print("Couldn't find any objects for ", domain)
-                    data["zeros"].append(sites[dom])
-                else:
-                    print("Found %d objects for %s" % (len(objects), domain))
-                    data["valid"][sites[dom]] = {"objects" : objects}
+                    if (len(objects) == 0):
+                        print("Couldn't find any objects for ", domain)
+                        log.write("Couldn't find any objects for ", domain)
+                        data["zeros"].append(sites[dom])
+                    else:
+                        print("Found %d objects for %s" % (len(objects), domain))
+                        log.write("Found %d objects for %s" % (len(objects), domain))
+                        data["valid"][sites[dom]] = {"objects" : objects}
 
-            except Exception as exception:
-                name = repr(exception).split('(')[0]
-                print("%s exception encountered while requesting %s" % (name, domain))
-                data["exceptions"][sites[dom]] = name
+                except Exception as exception:
+                    name = repr(exception).split('(')[0]
+                    print("%s exception encountered while requesting %s" % (name, domain))
+                    log.write("%s exception encountered while requesting %s" % (name, domain))
+                    data["exceptions"][sites[dom]] = name
 
 
-    # with open("temp.txt", "wb") as w:
-    #     w.write(soup.prettify().encode('utf8'))
-    return (data)
+        # with open("temp.txt", "wb") as w:
+        #     w.write(soup.prettify().encode('utf8'))
+        return (data)
 
 
 def dumper(data, goalLength, experiment):
+    with open("../Logs/Experiment %s.log" % str(experiment), 'a') as log:
+        fileName = ("results")
+        os.chdir('../Results/Associated')
 
-    fileName = ("results")
-    os.chdir('../Results/Associated')
+        for elem in data["progress"]:
+            fileName += "_" + elem
+        fileName += "[" + str(goalLength) + "]"
 
-    for elem in data["progress"]:
-        fileName += "_" + elem
-    fileName += "[" + str(goalLength) + "]"
+        # if we're actually setting the experiment number, probably through runner.py
+        if (experiment != -1):
+            fileName += str(experiment)
 
-    # if we're actually setting the experiment number, probably through runner.py
-    if (experiment != -1):
-        fileName += str(experiment)
+        fileName += ".json"
 
-    fileName += ".json"
+        print("\ndumping results to ../Results/Associated/", fileName)
+        log.write("\ndumping results to ../Results/Associated/", fileName)
 
-    print("\ndumping results to ../Results/Associated/", fileName)
-
-    with open(fileName, 'w') as fp:
-        json.dump(data, fp, indent=4)
+        with open(fileName, 'w') as fp:
+            json.dump(data, fp, indent=4)
 
 
 def run():
@@ -170,11 +178,11 @@ def run():
         experiment = args.experiment
 
     # read in the list of hostnames we want to analyze
-    sites = reader(goalLength)
+    sites = reader(goalLength, experiment)
 
     # go to each of the hostnames and find an object that we can use 
     # for collecting results on
-    data = obj_associator(sites)
+    data = obj_associator(sites, experiment)
 
     # dump our results out to a JSON to be analyzed later
     dumper(data, goalLength, experiment)
