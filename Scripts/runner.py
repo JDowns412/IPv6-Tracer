@@ -31,28 +31,35 @@ def run():
     goalLength = 100
     parser = argparse.ArgumentParser()
     parser.add_argument(action="store", dest="goalLength", nargs="?")
+    parser.add_argument(action="store", dest="jake", nargs="?")
     args = parser.parse_args()
+
+    # for running on a linux vs windows computer
+    if (bool(args.jake)):
+        py = "python"
+    else:
+        py = "python3"
 
     # apply the inputted arguments
     if (args.goalLength):
         goalLength = args.goalLength
 
-    print("HEHEHEE", goalLength)
+    print("Goal Length:", goalLength)
 
     tracker = reader()
 
     # call the associator script
-    subprocess.call(["python3", "associator.py", str(goalLength), str(tracker["count"])])
+    subprocess.call([py, "associator.py", str(goalLength), str(tracker["count"])])
 
     os.chdir('../Scripts')
 
     # call the cleaner script
-    subprocess.call(["python3", "cleaner.py", str(goalLength), str(tracker["count"])])
+    subprocess.call([py, "cleaner.py", str(goalLength), str(tracker["count"])])
 
     os.chdir('../Scripts')
 
     # call the analysis script
-    subprocess.call(["python3", "analyzer.py", str(goalLength), str(tracker["count"])])
+    subprocess.call([py, "analyzer.py", str(goalLength), str(tracker["count"])])
 
     os.chdir('../Scripts')
 
