@@ -1,6 +1,6 @@
 import subprocess, json, os, argparse
 
-def reader(experiment):
+def reader():
 
     file = "tracker.json"
     location = "../Results/" + file
@@ -49,6 +49,8 @@ def run():
     print("Goal Length:", goalLength)
 
     tracker = reader()
+
+    print("running experiment ", tracker["count"])
 
     # call the associator script
     subprocess.call([py, "associator.py", str(goalLength), str(tracker["count"])])

@@ -1,0 +1,1172 @@
+{
+    "exceptions": {
+        "baidu.com": "TRACE... TimeoutError"
+    },
+    "zeros": [
+        "vk.com",
+        "qq.com",
+        "varzesh3.com"
+    ],
+    "valid": {
+        "google.com": {
+            "objects": [
+                "/images/branding/googlelogo/1x/googlelogo_white_background_color_272x92dp.png",
+                "/images/branding/googleg/1x/googleg_standard_color_128dp.png",
+                "/images/branding/product/ico/googleg_lodp.ico"
+            ],
+            "dirty": false,
+            "preferred": "/images/branding/googlelogo/1x/googlelogo_white_background_color_272x92dp.png",
+            "6Support": true,
+            "sixes": [
+                "2607:f8b0:4002:810::200"
+            ],
+            "results": {
+                "4": [
+                    [
+                        0.001001119613647461,
+                        362
+                    ],
+                    [
+                        0.0010008811950683594,
+                        1430
+                    ],
+                    [
+                        0.0,
+                        362
+                    ],
+                    [
+                        0.0010006427764892578,
+                        3222
+                    ],
+                    [
+                        0.0,
+                        1430
+                    ],
+                    [
+                        0.0010013580322265625,
+                        2154
+                    ],
+                    [
+                        0.0,
+                        362
+                    ],
+                    [
+                        0.0020020008087158203,
+                        1430
+                    ],
+                    [
+                        0.0010008811950683594,
+                        1430
+                    ],
+                    [
+                        0.0,
+                        2154
+                    ]
+                ],
+                "6": [
+                    [
+                        0.0,
+                        2364
+                    ],
+                    [
+                        0.004002571105957031,
+                        1220
+                    ],
+                    [
+                        0.0010008811950683594,
+                        572
+                    ],
+                    [
+                        0.0010008811950683594,
+                        1792
+                    ],
+                    [
+                        0.0,
+                        3012
+                    ],
+                    [
+                        0.0010004043579101562,
+                        1220
+                    ],
+                    [
+                        0.0,
+                        1144
+                    ],
+                    [
+                        0.003002643585205078,
+                        1220
+                    ],
+                    [
+                        0.0,
+                        2364
+                    ],
+                    [
+                        0.003003358840942383,
+                        1220
+                    ]
+                ]
+            },
+            "4trace": {
+                "raw": "(b'\\r\\nTracing route to google.com [172.217.2.46]\\r\\nover a maximum of 30 hops:\\r\\n\\r\\n  1     7 ms     4 ms     3 ms  Linksys311 [192.168.1.1] \\r\\n  2     *        *        *     Request timed out.\\r\\n  3    11 ms    12 ms    12 ms  cts02gftnma-gbe-3-0-0.gftn.ma.charter.com [96.34.84.45] \\r\\n  4    15 ms    14 ms    15 ms  crr02nwtwct-bue-12.nwtw.ct.charter.com [96.34.80.62] \\r\\n  5    25 ms    15 ms    15 ms  bbr01nwtwct-bue-3.nwtw.ct.charter.com [96.34.2.160] \\r\\n  6    26 ms    22 ms    23 ms  bbr01blvlil-tge-0-0-0-11.blvl.il.charter.com [96.34.0.137] \\r\\n  7    27 ms    27 ms    26 ms  prr01ashbva-bue-6.ashb.va.charter.com [96.34.3.89] \\r\\n  8    22 ms    21 ms    21 ms  204.15.20.161 \\r\\n  9     *        *        *     Request timed out.\\r\\n 10    23 ms    22 ms    21 ms  209.85.246.158 \\r\\n 11    25 ms    26 ms    26 ms  108.170.246.66 \\r\\n 12    26 ms    27 ms    32 ms  216.239.47.127 \\r\\n 13    30 ms    30 ms    31 ms  216.239.48.2 \\r\\n 14    46 ms    45 ms    46 ms  216.239.40.118 \\r\\n 15    37 ms    37 ms    37 ms  209.85.250.97 \\r\\n 16    42 ms    40 ms    40 ms  108.170.249.161 \\r\\n 17    44 ms    45 ms    44 ms  108.170.225.131 \\r\\n 18    40 ms    39 ms    40 ms  atl14s78-in-f14.1e100.net [172.217.2.46] \\r\\n\\r\\nTrace complete.\\r\\n', b'')",
+                "hops": 23
+            },
+            "6trace": {
+                "raw": "(b'\\r\\nTracing route to google.com [2607:f8b0:4002:810::200e]\\r\\nover a maximum of 30 hops:\\r\\n\\r\\n  1     3 ms     3 ms     3 ms  2600-6c64-7c7f-f302-c256-27ff-fe45-4db1.dhcp6.chtrptr.net [2600:6c64:7c7f:f302:c256:27ff:fe45:4db1] \\r\\n  2     *        *        *     Request timed out.\\r\\n  3    13 ms    12 ms    12 ms  2001:506:100:103b::5 \\r\\n  4    16 ms    15 ms    15 ms  2001:506:100:1003::4 \\r\\n  5    15 ms    16 ms    22 ms  bbr02oxfrma-tge0-0-0-3.oxfr.ma.charter.com [2001:506:100:250::1] \\r\\n  6    30 ms    31 ms    31 ms  2001:506:100:b::6 \\r\\n  7    31 ms    34 ms    31 ms  bbr01rvsdca-tge0-0-0-1.rvsd.ca.charter.com [2001:506:100:32c::2] \\r\\n  8     *        *        *     Request timed out.\\r\\n  9    26 ms    26 ms    26 ms  2607:f8b0:8000:5e::1:1 \\r\\n 10    29 ms    26 ms    26 ms  2001:4860:0:1::b2e \\r\\n 11     *       26 ms     *     2001:4860:0:1099::2 \\r\\n 12    40 ms    41 ms    41 ms  2001:4860::8:0:caf7 \\r\\n 13    42 ms    42 ms    50 ms  2001:4860::c:0:d109 \\r\\n 14    46 ms    45 ms    45 ms  2001:4860::8:0:ce30 \\r\\n 15    45 ms    45 ms    45 ms  2001:4860::9:4000:ea46 \\r\\n 16    49 ms    49 ms    50 ms  2001:4860:0:1::2421 \\r\\n 17    41 ms    49 ms    41 ms  atl26s13-in-x0e.1e100.net [2607:f8b0:4002:810::200e] \\r\\n\\r\\nTrace complete.\\r\\n', b'')",
+                "hops": 22
+            }
+        },
+        "baidu.com": {
+            "objects": [
+                "//www.baidu.com/img/bd_logo1.png",
+                "//www.baidu.com/img/baidu_jgylogo3.gif",
+                "/favicon.ico"
+            ],
+            "dirty": false,
+            "preferred": "//www.baidu.com/img/bd_logo1.png",
+            "6Support": false,
+            "results": {
+                "4": []
+            }
+        },
+        "yandex.ru": {
+            "objects": [
+                "//yastatic.net/lego/_/La6qi18Z8LwgnZdsAr1qy1GwCwo.gif",
+                "https://yastatic.net/morda-logo/i/share-logo-ru.png",
+                "//yastatic.net/iconostasis/_/8lFaTHLDzmsEZz-5XaQg9iTWZGE.png",
+                "//yastatic.net/iconostasis/_/5mdPq4V7ghRgzBvMkCaTzd2fjYg.png",
+                "//yastatic.net/iconostasis/_/s-hGoCQMUosTziuARBks08IUxmc.png",
+                "//yastatic.net/iconostasis/_/KnU823iWwj_vrPra7x9aQ-4yjRw.png",
+                "//yastatic.net/iconostasis/_/wT9gfGZZ80sP0VsoR6dgDyXJf2Y.png"
+            ],
+            "dirty": false,
+            "preferred": "/https://yastatic.net/morda-logo/i/share-logo-ru.png",
+            "6Support": true,
+            "sixes": [
+                "2a02:6b8:a::"
+            ],
+            "results": {
+                "4": [
+                    [
+                        0.0,
+                        1410
+                    ],
+                    [
+                        0.0019986629486083984,
+                        1410
+                    ],
+                    [
+                        0.0,
+                        575
+                    ],
+                    [
+                        0.01802992820739746,
+                        1410
+                    ],
+                    [
+                        0.0,
+                        1410
+                    ],
+                    [
+                        0.003003358840942383,
+                        1410
+                    ],
+                    [
+                        0.0009882450103759766,
+                        11425
+                    ],
+                    [
+                        0.02703094482421875,
+                        1410
+                    ],
+                    [
+                        0.0010018348693847656,
+                        2820
+                    ],
+                    [
+                        0.003007650375366211,
+                        1410
+                    ]
+                ],
+                "6": [
+                    [
+                        0.0,
+                        6303
+                    ],
+                    [
+                        0.002897500991821289,
+                        1220
+                    ],
+                    [
+                        0.0,
+                        3660
+                    ],
+                    [
+                        0.002019643783569336,
+                        14640
+                    ],
+                    [
+                        0.00599360466003418,
+                        1220
+                    ],
+                    [
+                        0.0010008811950683594,
+                        4880
+                    ],
+                    [
+                        0.0,
+                        9760
+                    ],
+                    [
+                        0.14937806129455566,
+                        1220
+                    ],
+                    [
+                        0.0,
+                        31576
+                    ],
+                    [
+                        0.0,
+                        31576
+                    ]
+                ]
+            },
+            "4trace": {
+                "raw": "(b'\\r\\nTracing route to yandex.ru [77.88.55.88]\\r\\nover a maximum of 30 hops:\\r\\n\\r\\n  1     3 ms     3 ms     3 ms  Linksys311 [192.168.1.1] \\r\\n  2     *        *        *     Request timed out.\\r\\n  3    11 ms    11 ms    12 ms  cts02gftnma-gbe-3-0-0.gftn.ma.charter.com [96.34.84.45] \\r\\n  4    14 ms    14 ms    14 ms  crr02nwtwct-bue-12.nwtw.ct.charter.com [96.34.80.62] \\r\\n  5    16 ms    15 ms    14 ms  bbr01nwtwct-bue-3.nwtw.ct.charter.com [96.34.2.160] \\r\\n  6    17 ms    16 ms    15 ms  be4144.nr11.b006633-1.hpn04.atlas.cogentco.com [38.88.242.9] \\r\\n  7    16 ms    15 ms    15 ms  te0-3-0-7.rcr21.hpn04.atlas.cogentco.com [154.24.36.237] \\r\\n  8    20 ms    20 ms    20 ms  be2120.ccr32.bos01.atlas.cogentco.com [154.54.47.145] \\r\\n  9    82 ms    83 ms    81 ms  be2983.ccr42.lon13.atlas.cogentco.com [154.54.1.177] \\r\\n 10    91 ms    91 ms    89 ms  be12488.ccr42.ams03.atlas.cogentco.com [130.117.51.42] \\r\\n 11    90 ms    90 ms    89 ms  be2447.rcr21.b021535-1.ams03.atlas.cogentco.com [130.117.50.250] \\r\\n 12   100 ms   100 ms    99 ms  149.6.60.110 \\r\\n 13   119 ms   133 ms   118 ms  jansson-et-4-1-0.yndx.net [213.180.213.95] \\r\\n 14   124 ms   122 ms   120 ms  man1-x2-eth-trunk1.yndx.net [213.180.213.91] \\r\\n 15   120 ms   120 ms   120 ms  man1-d1-po9-1221.yndx.net [84.201.142.235] \\r\\n 16     *        *        *     Request timed out.\\r\\n 17   122 ms   119 ms   121 ms  yandex.ru [77.88.55.88] \\r\\n\\r\\nTrace complete.\\r\\n', b'')",
+                "hops": 22
+            },
+            "6trace": {
+                "raw": "(b'\\r\\nTracing route to yandex.ru [2a02:6b8:a::a]\\r\\nover a maximum of 30 hops:\\r\\n\\r\\n  1     3 ms     3 ms     3 ms  2600-6c64-7c7f-f302-c256-27ff-fe45-4db1.dhcp6.chtrptr.net [2600:6c64:7c7f:f302:c256:27ff:fe45:4db1] \\r\\n  2     *        *        *     Request timed out.\\r\\n  3    13 ms    13 ms    13 ms  2001:506:100:103b::5 \\r\\n  4    14 ms    15 ms    14 ms  2001:506:100:1003::4 \\r\\n  5    31 ms    15 ms    16 ms  bbr02oxfrma-tge0-0-0-3.oxfr.ma.charter.com [2001:506:100:250::1] \\r\\n  6    37 ms    37 ms    32 ms  2001:506:100:b::6 \\r\\n  7    32 ms    33 ms    30 ms  bbr01rvsdca-tge0-0-0-1.rvsd.ca.charter.com [2001:506:100:32c::2] \\r\\n  8    31 ms    35 ms    30 ms  100ge6-1.core1.ash1.he.net [2001:470:0:3c1::1] \\r\\n  9    26 ms    27 ms    26 ms  eqix-dc5.yandex.com [2001:504:0:2:0:1:3238:2] \\r\\n 10   112 ms   111 ms   111 ms  ams1-b1.yndx.net [2a02:6b8:0:1800::100] \\r\\n 11   136 ms   135 ms   134 ms  jansson.yndx.net [2a02:6b8:0:3401::1] \\r\\n 12     *        *        *     Request timed out.\\r\\n 13     *        *        *     Request timed out.\\r\\n 14   154 ms   147 ms   148 ms  man1-a2-eth-trunk1-3666.yndx.net [2a02:6b8:0:e11::e902:d1] \\r\\n 15   134 ms   133 ms   133 ms  yandex.ru [2a02:6b8:a::a] \\r\\n\\r\\nTrace complete.\\r\\n', b'')",
+                "hops": 19
+            }
+        },
+        "facebook.com": {
+            "objects": [
+                "https://static.xx.fbcdn.net/rsrc.php/v3/yb/r/GsNJNwuI-UM.gif",
+                "https://static.xx.fbcdn.net/rsrc.php/v3/yb/r/GsNJNwuI-UM.gif",
+                "https://static.xx.fbcdn.net/rsrc.php/v3/yb/r/GsNJNwuI-UM.gif",
+                "https://www.facebook.com/images/fb_icon_325x325.png",
+                "https://static.xx.fbcdn.net/rsrc.php/yV/r/hzMapiNYYpW.ico"
+            ],
+            "dirty": false,
+            "preferred": "/https://static.xx.fbcdn.net/rsrc.php/v3/yb/r/GsNJNwuI-UM.gif",
+            "6Support": true,
+            "sixes": [
+                "2a03:2880:f103:83:face:b00c:0:25d"
+            ],
+            "results": {
+                "4": [
+                    [
+                        0.048053741455078125,
+                        351
+                    ],
+                    [
+                        0.04819607734680176,
+                        351
+                    ],
+                    [
+                        0.04886031150817871,
+                        351
+                    ],
+                    [
+                        0.04803013801574707,
+                        351
+                    ],
+                    [
+                        0.04994058609008789,
+                        351
+                    ],
+                    [
+                        0.04857230186462402,
+                        351
+                    ],
+                    [
+                        0.04846549034118652,
+                        351
+                    ],
+                    [
+                        0.04728507995605469,
+                        351
+                    ],
+                    [
+                        0.047780513763427734,
+                        351
+                    ],
+                    [
+                        0.047722816467285156,
+                        351
+                    ]
+                ],
+                "6": [
+                    [
+                        0.05330228805541992,
+                        351
+                    ],
+                    [
+                        0.0532231330871582,
+                        351
+                    ],
+                    [
+                        0.053813934326171875,
+                        351
+                    ],
+                    [
+                        0.05422329902648926,
+                        351
+                    ],
+                    [
+                        0.05440115928649902,
+                        351
+                    ],
+                    [
+                        0.06315803527832031,
+                        351
+                    ],
+                    [
+                        0.05509161949157715,
+                        351
+                    ],
+                    [
+                        0.05507373809814453,
+                        351
+                    ],
+                    [
+                        0.0541234016418457,
+                        351
+                    ],
+                    [
+                        0.05336499214172363,
+                        351
+                    ]
+                ]
+            },
+            "4trace": {
+                "raw": "(b'\\r\\nTracing route to facebook.com [31.13.69.228]\\r\\nover a maximum of 30 hops:\\r\\n\\r\\n  1     4 ms     3 ms     3 ms  Linksys311 [192.168.1.1] \\r\\n  2     *        *        *     Request timed out.\\r\\n  3    12 ms    12 ms    12 ms  cts02gftnma-gbe-3-0-0.gftn.ma.charter.com [96.34.84.45] \\r\\n  4    14 ms    14 ms    14 ms  crr02nwtwct-bue-12.nwtw.ct.charter.com [96.34.80.62] \\r\\n  5    14 ms    15 ms    15 ms  bbr01nwtwct-bue-3.nwtw.ct.charter.com [96.34.2.160] \\r\\n  6    26 ms    24 ms    23 ms  bbr01blvlil-tge-0-0-0-11.blvl.il.charter.com [96.34.0.137] \\r\\n  7    28 ms    26 ms    26 ms  prr01ashbva-bue-6.ashb.va.charter.com [96.34.3.89] \\r\\n  8    29 ms    21 ms    24 ms  ae18.pr03.iad3.tfbnw.net [103.4.97.212] \\r\\n  9    27 ms    27 ms    26 ms  po103.psw02.iad3.tfbnw.net [31.13.27.97] \\r\\n 10    21 ms    23 ms    21 ms  173.252.67.99 \\r\\n 11    21 ms    21 ms    21 ms  edge-star-mini-shv-01-iad3.facebook.com [31.13.69.228] \\r\\n\\r\\nTrace complete.\\r\\n', b'')",
+                "hops": 17
+            },
+            "6trace": {
+                "raw": "(b'\\r\\nTracing route to facebook.com [2a03:2880:f103:83:face:b00c:0:25de]\\r\\nover a maximum of 30 hops:\\r\\n\\r\\n  1     3 ms     3 ms     3 ms  2600-6c64-7c7f-f302-c256-27ff-fe45-4db1.dhcp6.chtrptr.net [2600:6c64:7c7f:f302:c256:27ff:fe45:4db1] \\r\\n  2     *        *        *     Request timed out.\\r\\n  3    12 ms    13 ms    11 ms  2001:506:100:103b::5 \\r\\n  4    15 ms    15 ms    14 ms  2001:506:100:1003::4 \\r\\n  5    16 ms    15 ms    15 ms  bbr02oxfrma-tge0-0-0-3.oxfr.ma.charter.com [2001:506:100:250::1] \\r\\n  6    34 ms    32 ms    30 ms  2001:506:100:b::6 \\r\\n  7    27 ms    26 ms    26 ms  bbr01rvsdca-tge0-0-0-1.rvsd.ca.charter.com [2001:506:100:32c::2] \\r\\n  8    39 ms    45 ms    35 ms  ae18.pr03.iad3.tfbnw.net [2620:0:1cff:dead:beee::280] \\r\\n  9    21 ms    21 ms    21 ms  po103.psw01.iad3.tfbnw.net [2620:0:1cff:dead:bef0::49] \\r\\n 10    29 ms    23 ms    21 ms  po1.msw1ah.01.iad3.tfbnw.net [2a03:2880:f003:ffff::f] \\r\\n 11    25 ms    26 ms    26 ms  edge-star-mini6-shv-01-iad3.facebook.com [2a03:2880:f103:83:face:b00c:0:25de] \\r\\n\\r\\nTrace complete.\\r\\n', b'')",
+                "hops": 17
+            }
+        },
+        "youtube.com": {
+            "objects": [
+                "/yts/img/pixel-vfl3z5WfW.gif",
+                "/yts/img/pixel-vfl3z5WfW.gif",
+                "/yts/img/pixel-vfl3z5WfW.gif",
+                "/yts/img/pixel-vfl3z5WfW.gif",
+                "/yts/img/pixel-vfl3z5WfW.gif",
+                "/yts/img/pixel-vfl3z5WfW.gif",
+                "/yts/img/pixel-vfl3z5WfW.gif",
+                "/yts/img/pixel-vfl3z5WfW.gif",
+                "/yts/img/pixel-vfl3z5WfW.gif",
+                "/yts/img/pixel-vfl3z5WfW.gif",
+                "/yts/img/pixel-vfl3z5WfW.gif",
+                "/yts/img/pixel-vfl3z5WfW.gif",
+                "/yts/img/pixel-vfl3z5WfW.gif",
+                "/yts/img/pixel-vfl3z5WfW.gif",
+                "/yts/img/pixel-vfl3z5WfW.gif",
+                "/yts/img/pixel-vfl3z5WfW.gif",
+                "/yts/img/pixel-vfl3z5WfW.gif",
+                "/yts/img/pixel-vfl3z5WfW.gif",
+                "/yts/img/pixel-vfl3z5WfW.gif",
+                "/yts/img/pixel-vfl3z5WfW.gif",
+                "/yts/img/pixel-vfl3z5WfW.gif",
+                "/yts/img/pixel-vfl3z5WfW.gif",
+                "/yts/img/pixel-vfl3z5WfW.gif",
+                "/yts/img/pixel-vfl3z5WfW.gif",
+                "/yts/img/pixel-vfl3z5WfW.gif",
+                "/yts/img/pixel-vfl3z5WfW.gif",
+                "/yts/img/pixel-vfl3z5WfW.gif",
+                "/yts/img/pixel-vfl3z5WfW.gif",
+                "/yts/img/pixel-vfl3z5WfW.gif",
+                "/yts/img/pixel-vfl3z5WfW.gif",
+                "/yts/img/pixel-vfl3z5WfW.gif",
+                "/yts/img/pixel-vfl3z5WfW.gif",
+                "/yts/img/pixel-vfl3z5WfW.gif",
+                "/yts/img/pixel-vfl3z5WfW.gif",
+                "/yts/img/pixel-vfl3z5WfW.gif",
+                "/yts/img/pixel-vfl3z5WfW.gif",
+                "/yts/img/pixel-vfl3z5WfW.gif",
+                "/yts/img/pixel-vfl3z5WfW.gif",
+                "/yts/img/pixel-vfl3z5WfW.gif",
+                "/yts/img/pixel-vfl3z5WfW.gif",
+                "/yts/img/pixel-vfl3z5WfW.gif",
+                "/yts/img/pixel-vfl3z5WfW.gif",
+                "/yts/img/pixel-vfl3z5WfW.gif",
+                "/yts/img/pixel-vfl3z5WfW.gif",
+                "/yts/img/pixel-vfl3z5WfW.gif",
+                "/yts/img/pixel-vfl3z5WfW.gif",
+                "/yts/img/pixel-vfl3z5WfW.gif",
+                "/yts/img/pixel-vfl3z5WfW.gif",
+                "/yts/img/pixel-vfl3z5WfW.gif",
+                "/yts/img/pixel-vfl3z5WfW.gif",
+                "/yts/img/pixel-vfl3z5WfW.gif",
+                "/yts/img/pixel-vfl3z5WfW.gif",
+                "/yts/img/pixel-vfl3z5WfW.gif",
+                "/yts/img/pixel-vfl3z5WfW.gif",
+                "/yts/img/pixel-vfl3z5WfW.gif",
+                "/yts/img/pixel-vfl3z5WfW.gif",
+                "/yts/img/pixel-vfl3z5WfW.gif",
+                "/yts/img/pixel-vfl3z5WfW.gif",
+                "/yts/img/pixel-vfl3z5WfW.gif",
+                "/yts/img/pixel-vfl3z5WfW.gif",
+                "/yts/img/pixel-vfl3z5WfW.gif",
+                "/yts/img/pixel-vfl3z5WfW.gif",
+                "/yts/img/pixel-vfl3z5WfW.gif",
+                "/yts/img/pixel-vfl3z5WfW.gif",
+                "/yts/img/pixel-vfl3z5WfW.gif",
+                "/yts/img/pixel-vfl3z5WfW.gif",
+                "/yts/img/pixel-vfl3z5WfW.gif",
+                "/yts/img/pixel-vfl3z5WfW.gif",
+                "/yts/img/pixel-vfl3z5WfW.gif",
+                "/yts/img/pixel-vfl3z5WfW.gif",
+                "/yts/img/pixel-vfl3z5WfW.gif",
+                "/yts/img/pixel-vfl3z5WfW.gif",
+                "/yts/img/pixel-vfl3z5WfW.gif",
+                "/yts/img/pixel-vfl3z5WfW.gif",
+                "/yts/img/pixel-vfl3z5WfW.gif",
+                "/yts/img/pixel-vfl3z5WfW.gif",
+                "/yts/img/pixel-vfl3z5WfW.gif",
+                "/yts/img/pixel-vfl3z5WfW.gif",
+                "/yts/img/pixel-vfl3z5WfW.gif",
+                "/yts/img/pixel-vfl3z5WfW.gif",
+                "/yts/img/pixel-vfl3z5WfW.gif",
+                "/yts/img/pixel-vfl3z5WfW.gif",
+                "/yts/img/pixel-vfl3z5WfW.gif",
+                "/yts/img/pixel-vfl3z5WfW.gif",
+                "/yts/img/pixel-vfl3z5WfW.gif",
+                "/yts/img/pixel-vfl3z5WfW.gif",
+                "/yts/img/pixel-vfl3z5WfW.gif",
+                "/yts/img/pixel-vfl3z5WfW.gif",
+                "/yts/img/pixel-vfl3z5WfW.gif",
+                "/yts/img/pixel-vfl3z5WfW.gif",
+                "/yts/img/pixel-vfl3z5WfW.gif",
+                "/yts/img/pixel-vfl3z5WfW.gif",
+                "/yts/img/pixel-vfl3z5WfW.gif",
+                "/yts/img/pixel-vfl3z5WfW.gif",
+                "/yts/img/yt_1200-vfl4C3T0K.png",
+                "https://s.ytimg.com/yts/img/favicon-vfl8qSV2F.ico",
+                "/yts/img/favicon_32-vflOogEID.png",
+                "/yts/img/favicon_48-vflVjB_Qk.png",
+                "/yts/img/favicon_96-vflW9Ec0w.png",
+                "/yts/img/favicon_144-vfliLAfaB.png"
+            ],
+            "dirty": false,
+            "preferred": "/yts/img/pixel-vfl3z5WfW.gif",
+            "6Support": true,
+            "sixes": [
+                "2607:f8b0:4002:c0c::5"
+            ],
+            "results": {
+                "4": [
+                    [
+                        0.07551932334899902,
+                        239
+                    ],
+                    [
+                        0.07270121574401855,
+                        239
+                    ],
+                    [
+                        0.07219147682189941,
+                        239
+                    ],
+                    [
+                        0.07246804237365723,
+                        239
+                    ],
+                    [
+                        0.07309699058532715,
+                        239
+                    ],
+                    [
+                        0.07308816909790039,
+                        239
+                    ],
+                    [
+                        0.07227015495300293,
+                        239
+                    ],
+                    [
+                        0.07314109802246094,
+                        239
+                    ],
+                    [
+                        0.07310605049133301,
+                        239
+                    ],
+                    [
+                        0.0701150894165039,
+                        239
+                    ]
+                ],
+                "6": [
+                    [
+                        0.06916308403015137,
+                        239
+                    ],
+                    [
+                        0.06945514678955078,
+                        239
+                    ],
+                    [
+                        0.07146286964416504,
+                        239
+                    ],
+                    [
+                        0.0702064037322998,
+                        239
+                    ],
+                    [
+                        0.07229256629943848,
+                        239
+                    ],
+                    [
+                        0.0691218376159668,
+                        239
+                    ],
+                    [
+                        0.0721442699432373,
+                        239
+                    ],
+                    [
+                        0.07218027114868164,
+                        239
+                    ],
+                    [
+                        0.07010769844055176,
+                        239
+                    ],
+                    [
+                        0.07030057907104492,
+                        239
+                    ]
+                ]
+            },
+            "4trace": {
+                "raw": "(b'\\r\\nTracing route to youtube.com [172.217.0.142]\\r\\nover a maximum of 30 hops:\\r\\n\\r\\n  1     3 ms     3 ms     3 ms  Linksys311 [192.168.1.1] \\r\\n  2     *        *        *     Request timed out.\\r\\n  3    12 ms    12 ms    11 ms  cts02gftnma-gbe-3-0-0.gftn.ma.charter.com [96.34.84.45] \\r\\n  4    15 ms    14 ms    14 ms  crr02nwtwct-bue-12.nwtw.ct.charter.com [96.34.80.62] \\r\\n  5    15 ms    15 ms    15 ms  bbr01nwtwct-bue-3.nwtw.ct.charter.com [96.34.2.160] \\r\\n  6    23 ms    23 ms    23 ms  bbr01blvlil-tge-0-0-0-11.blvl.il.charter.com [96.34.0.137] \\r\\n  7    26 ms    27 ms    26 ms  prr01ashbva-bue-6.ashb.va.charter.com [96.34.3.89] \\r\\n  8    28 ms    26 ms    26 ms  96-34-148-35.static.unas.mo.charter.com [96.34.148.35] \\r\\n  9     *        *        *     Request timed out.\\r\\n 10    21 ms    21 ms    22 ms  216.239.48.200 \\r\\n 11    27 ms    26 ms    27 ms  108.170.246.66 \\r\\n 12    23 ms    22 ms    22 ms  108.170.232.199 \\r\\n 13    35 ms    33 ms    31 ms  216.239.48.31 \\r\\n 14    42 ms    41 ms    47 ms  216.239.40.132 \\r\\n 15    41 ms    44 ms    41 ms  209.85.250.69 \\r\\n 16     *        *        *     Request timed out.\\r\\n 17    44 ms    41 ms    41 ms  108.170.225.125 \\r\\n 18    37 ms    36 ms     *     atl14s77-in-f14.1e100.net [172.217.0.142] \\r\\n 19    36 ms    36 ms    36 ms  atl14s77-in-f14.1e100.net [172.217.0.142] \\r\\n\\r\\nTrace complete.\\r\\n', b'')",
+                "hops": 23
+            },
+            "6trace": {
+                "raw": "(b'\\r\\nTracing route to youtube.com [2607:f8b0:4002:c03::5b]\\r\\nover a maximum of 30 hops:\\r\\n\\r\\n  1     3 ms     3 ms     3 ms  2600-6c64-7c7f-f302-c256-27ff-fe45-4db1.dhcp6.chtrptr.net [2600:6c64:7c7f:f302:c256:27ff:fe45:4db1] \\r\\n  2     *        *        *     Request timed out.\\r\\n  3    13 ms    11 ms    12 ms  2001:506:100:103b::5 \\r\\n  4    15 ms    15 ms    15 ms  2001:506:100:1003::4 \\r\\n  5    21 ms    22 ms    15 ms  bbr02oxfrma-tge0-0-0-3.oxfr.ma.charter.com [2001:506:100:250::1] \\r\\n  6    26 ms    31 ms    32 ms  2001:506:100:b::6 \\r\\n  7    25 ms    26 ms    27 ms  bbr01rvsdca-tge0-0-0-1.rvsd.ca.charter.com [2001:506:100:32c::2] \\r\\n  8     *        *        *     Request timed out.\\r\\n  9    21 ms    22 ms    21 ms  2607:f8b0:8000:5e::1:1 \\r\\n 10    22 ms    38 ms    30 ms  2001:4860:0:1::b2a \\r\\n 11    22 ms    27 ms    22 ms  2001:4860:0:1098::11 \\r\\n 12    58 ms    37 ms    37 ms  2001:4860::8:0:caf7 \\r\\n 13    38 ms    37 ms    39 ms  2001:4860::c:0:d109 \\r\\n 14    40 ms    41 ms    40 ms  2001:4860::8:0:ce30 \\r\\n 15    44 ms    41 ms    41 ms  2001:4860::2:0:878b \\r\\n 16     *        *        *     Request timed out.\\r\\n 17     *        *        *     Request timed out.\\r\\n 18     *        *        *     Request timed out.\\r\\n 19     *        *        *     Request timed out.\\r\\n 20     *        *        *     Request timed out.\\r\\n 21     *        *        *     Request timed out.\\r\\n 22     *        *        *     Request timed out.\\r\\n 23     *        *        *     Request timed out.\\r\\n 24     *        *        *     Request timed out.\\r\\n 25    37 ms    38 ms    38 ms  ya-in-x5b.1e100.net [2607:f8b0:4002:c03::5b] \\r\\n\\r\\nTrace complete.\\r\\n', b'')",
+                "hops": 21
+            }
+        },
+        "taobao.com": {
+            "objects": [
+                "https://img.alicdn.com/tfs/TB1gs46RFXXXXaFXpXXXXXXXXXX-288-288.png",
+                "//img.alicdn.com/tfs/TB1YpOdRpXXXXbGaXXXXXXXXXXX-174-48.png",
+                "//gw.alicdn.com/tfs/TB1IkTuRFXXXXcNXVXXXXXXXXXX-200-66.png",
+                "//gw.alicdn.com/tfs/TB1lA7ARFXXXXcAXFXXXXXXXXXX-223-68.png",
+                "https://gw.alicdn.com/tfs/TB18QBwRVXXXXXdaXXXXXXXXXXX-168-54.png",
+                "https://img.alicdn.com/tfs/TB1sJH6aC_I8KJjy0FoXXaFnVXa-200-200.png",
+                "https://img.alicdn.com/tfs/TB1f1cWbfDH8KJjy1XcXXcpdXXa-200-200.png",
+                "//img.alicdn.com/tfs/TB1VlKFRpXXXXcNapXXXXXXXXXX-16-16.png"
+            ],
+            "dirty": false,
+            "preferred": "/https://img.alicdn.com/tfs/TB1gs46RFXXXXaFXpXXXXXXXXXX-288-288.png",
+            "6Support": false,
+            "results": {
+                "4": [
+                    [
+                        0.24549651145935059,
+                        503
+                    ],
+                    [
+                        0.24544739723205566,
+                        503
+                    ],
+                    [
+                        0.24520087242126465,
+                        503
+                    ],
+                    [
+                        0.24547481536865234,
+                        503
+                    ],
+                    [
+                        0.24585318565368652,
+                        503
+                    ],
+                    [
+                        0.2455141544342041,
+                        503
+                    ],
+                    [
+                        0.24576568603515625,
+                        503
+                    ],
+                    [
+                        0.24430346488952637,
+                        503
+                    ],
+                    [
+                        0.24420928955078125,
+                        503
+                    ],
+                    [
+                        0.24567341804504395,
+                        503
+                    ]
+                ]
+            }
+        },
+        "yahoo.com": {
+            "objects": [
+                "https://beap-bc.yahoo.com/yc/YnY9MS4wLjAmYnM9KDE4ZTU0ZjVtbihnaWQkbW5jcGhqYzBMallKS1A3U1dqUm9naUFBTWpZd01BQUFBQUF2dUJMeSxzdCQxNTEzMzg0MDY2OTgxMTA2LHNpJDQ0NTIwNTEsc3AkMjAyMzUzODA3NSxjdCQyNSx5YngkY0lPUTNubGl1RnNyLnpvOUJYMTBSZyxsbmckZW4tdXMsY3IkNDY4NDIzMDA1MSx2JDIuMCxhaWQkQ01RMlptS0xuM2stLGJpJDIzNDUyMjQ1NTEsbW1lJDk4NjIxNTc4MTE2MTY5MjAyMDQsdyQxLGlkJG5vbl9jc2NfaW1wLHJkJDExaXI0YnN1aCx5b28kMSxhZ3AkMzU3OTk4MzA1MSxhcCRNQVNUKSk/1/*https://s.yimg.com/cv/eng/externals/131110/a/p.gif",
+                "https://s.yimg.com/cv/ae/us/audience/121213/970x2502266zebpv.jpg",
+                "https://beap-bc.yahoo.com/yc/YnY9MS4wLjAmYnM9KDE4Y3ZuM2ltcihnaWQkbW5jcGhqYzBMallKS1A3U1dqUm9naUFBTWpZd01BQUFBQUF2dUJMeSxzdCQxNTEzMzg0MDY2OTgxMTA2LHNpJDQ0NTIwNTEsc3AkMjAyMzUzODA3NSxjdCQyNSx5YngkY0lPUTNubGl1RnNyLnpvOUJYMTBSZyxsbmckZW4tdXMsY3IkNDY4NDIzMDA1MSx2JDIuMCxhaWQkQ01RMlptS0xuM2stLGJpJDIzNDUyMjQ1NTEsbW1lJDk4NjIxNTc4MTE2MTY5MjAyMDQsdyQyLGlkJG5vanNfdmlldyxyZCQxMWlyNGJzdWgseW9vJDEsYWdwJDM1Nzk5ODMwNTEsYXAkTUFTVCkp/0/*https://s.yimg.com/cv/eng/externals/131110/a/p.gif",
+                "https://s.yimg.com/uu/api/res/1.2/vqtq22A44BdY7IEv9a8HVg--~B/Zmk9c3RyaW07aD0xNjA7cHlvZmY9MDtxPTgwO3c9MzQwO3NtPTE7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/creatr-images/GLB/2017-12-15/c9b44680-e1b3-11e7-a4c6-0b2e73345b0c_fan1.jpg.cf.jpg",
+                "https://s.yimg.com/uu/api/res/1.2/F_bH9utn3nMrRjZ7LcqdDw--~B/Zmk9c3RyaW07aD0xNjA7cHlvZmY9MDtxPTgwO3c9MzQwO3NtPTE7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/creatr-images/GLB/2017-12-15/dfda81f0-e1bc-11e7-b429-7181417fcd4e_rodeo-drive-plastic-surgery-ht-er-171214_16x9_992.jpg.cf.jpg",
+                "https://s.yimg.com/uu/api/res/1.2/sfqQwxcemdASTM_8Fu0gsQ--~B/Zmk9c3RyaW07aD0xNjA7cHlvZmY9MDtxPTgwO3c9MzQwO3NtPTE7YXBwaWQ9eXRhY2h5b24-/https://media.zenfs.com/creatr-images/GLB/2017-12-15/2f7f7770-e1c1-11e7-97fd-d54fb531eea0_doncic.jpg.cf.jpg",
+                "https://s.yimg.com/uu/api/res/1.2/K1QXndGensl2nRMWFdfkmQ--~B/Zmk9c3RyaW07aD0xOTg7cHlvZmY9MDtxPTgwO3c9MzgwO3NtPTE7YXBwaWQ9eXRhY2h5b24-/https://s.yimg.com/av/moneyball/ads/1426609770531-7583.jpg.cf.jpg",
+                "https://s.yimg.com/uu/api/res/1.2/Lco0CgsFIm18HmGwTDXkFQ--~B/Zmk9c3RyaW07aD0xNDA7cHlvZmY9MDtxPTkwO3c9MTQwO3NtPTE7YXBwaWQ9eXRhY2h5b24-/http://media.zenfs.com/en_us/News/afp.com/9c3d112cc0098a029a7ee7711fc58be767332619.jpg.cf.jpg",
+                "https://s.yimg.com/os/mit/ape/m/81f43c2/t.gif",
+                "https://s.yimg.com/os/mit/ape/m/81f43c2/t.gif",
+                "https://s.yimg.com/os/mit/ape/m/81f43c2/t.gif",
+                "https://s.yimg.com/os/mit/ape/m/81f43c2/t.gif",
+                "https://s.yimg.com/os/mit/ape/m/81f43c2/t.gif",
+                "https://s.yimg.com/os/mit/ape/m/81f43c2/t.gif",
+                "https://s.yimg.com/os/mit/ape/m/81f43c2/t.gif",
+                "https://s.yimg.com/os/mit/ape/m/81f43c2/t.gif",
+                "https://s.yimg.com/os/mit/ape/w/d8f6e02/dark/flurries_day_night.png",
+                "https://s.yimg.com/os/mit/ape/w/d8f6e02/dark/fair_day.png",
+                "https://s.yimg.com/os/mit/ape/w/d8f6e02/dark/partly_cloudy_day.png",
+                "https://s.yimg.com/os/mit/ape/w/d8f6e02/dark/mostly_cloudy_day_night.png",
+                "https://s.yimg.com/os/mit/ape/m/81f43c2/t.gif",
+                "https://s.yimg.com/os/mit/ape/m/81f43c2/t.gif",
+                "https://s.yimg.com/os/mit/ape/m/81f43c2/t.gif",
+                "https://s.yimg.com/os/mit/ape/m/81f43c2/t.gif",
+                "https://s.yimg.com/os/mit/ape/m/81f43c2/t.gif",
+                "https://s.yimg.com/os/mit/ape/m/81f43c2/t.gif",
+                "https://s.yimg.com/os/mit/ape/m/81f43c2/t.gif",
+                "https://s.yimg.com/os/mit/ape/m/81f43c2/t.gif",
+                "https://s.yimg.com/os/mit/ape/m/81f43c2/t.gif",
+                "https://s.yimg.com/os/mit/ape/m/81f43c2/t.gif",
+                "https://s.yimg.com/os/mit/ape/m/81f43c2/t.gif",
+                "https://s.yimg.com/os/mit/ape/m/81f43c2/t.gif",
+                "https://s.yimg.com/os/mit/ape/m/81f43c2/t.gif",
+                "https://s.yimg.com/dh/ap/default/130909/y_200_a.png",
+                "https://mbp.yimg.com/sy/rz/l/favicon.ico"
+            ],
+            "dirty": false,
+            "preferred": "/https://beap-bc.yahoo.com/yc/YnY9MS4wLjAmYnM9KDE4ZTU0ZjVtbihnaWQkbW5jcGhqYzBMallKS1A3U1dqUm9naUFBTWpZd01BQUFBQUF2dUJMeSxzdCQxNTEzMzg0MDY2OTgxMTA2LHNpJDQ0NTIwNTEsc3AkMjAyMzUzODA3NSxjdCQyNSx5YngkY0lPUTNubGl1RnNyLnpvOUJYMTBSZyxsbmckZW4tdXMsY3IkNDY4NDIzMDA1MSx2JDIuMCxhaWQkQ01RMlptS0xuM2stLGJpJDIzNDUyMjQ1NTEsbW1lJDk4NjIxNTc4MTE2MTY5MjAyMDQsdyQxLGlkJG5vbl9jc2NfaW1wLHJkJDExaXI0YnN1aCx5b28kMSxhZ3AkMzU3OTk4MzA1MSxhcCRNQVNUKSk/1/*https://s.yimg.com/cv/eng/externals/131110/a/p.gif",
+            "6Support": true,
+            "sixes": [
+                "2001:4998:58:2201::7",
+                "2001:4998:c:e33::5",
+                "2001:4998:44:204::100"
+            ],
+            "results": {
+                "4": [
+                    [
+                        0.05289340019226074,
+                        990
+                    ],
+                    [
+                        0.0799407958984375,
+                        990
+                    ],
+                    [
+                        0.05579733848571777,
+                        990
+                    ],
+                    [
+                        0.05440330505371094,
+                        990
+                    ],
+                    [
+                        0.05368852615356445,
+                        990
+                    ],
+                    [
+                        0.053148508071899414,
+                        990
+                    ],
+                    [
+                        0.05391740798950195,
+                        990
+                    ],
+                    [
+                        0.0531764030456543,
+                        990
+                    ],
+                    [
+                        0.05418705940246582,
+                        990
+                    ],
+                    [
+                        0.053144216537475586,
+                        990
+                    ]
+                ],
+                "6": [
+                    [
+                        0.06506133079528809,
+                        991
+                    ],
+                    [
+                        0.06706380844116211,
+                        991
+                    ],
+                    [
+                        0.06606340408325195,
+                        991
+                    ],
+                    [
+                        0.06806540489196777,
+                        991
+                    ],
+                    [
+                        0.06606364250183105,
+                        991
+                    ],
+                    [
+                        0.06806445121765137,
+                        991
+                    ],
+                    [
+                        0.0650627613067627,
+                        991
+                    ],
+                    [
+                        0.06706404685974121,
+                        991
+                    ],
+                    [
+                        0.06706404685974121,
+                        991
+                    ],
+                    [
+                        0.06706523895263672,
+                        991
+                    ]
+                ]
+            },
+            "4trace": {
+                "raw": "(b'\\r\\nTracing route to yahoo.com [98.138.252.38]\\r\\nover a maximum of 30 hops:\\r\\n\\r\\n  1     3 ms     3 ms     3 ms  Linksys311 [192.168.1.1] \\r\\n  2     *        *        *     Request timed out.\\r\\n  3    12 ms    12 ms    11 ms  cts02gftnma-gbe-3-0-0.gftn.ma.charter.com [96.34.84.45] \\r\\n  4    15 ms    14 ms    13 ms  crr02nwtwct-bue-12.nwtw.ct.charter.com [96.34.80.62] \\r\\n  5    19 ms    15 ms    15 ms  bbr01nwtwct-bue-3.nwtw.ct.charter.com [96.34.2.160] \\r\\n  6    24 ms    23 ms    23 ms  bbr01blvlil-tge-0-0-0-11.blvl.il.charter.com [96.34.0.137] \\r\\n  7    27 ms    29 ms    27 ms  prr01ashbva-bue-6.ashb.va.charter.com [96.34.3.89] \\r\\n  8    28 ms    25 ms    26 ms  xe-9-0-5.pat1.dce.yahoo.com [216.115.100.134] \\r\\n  9    41 ms    52 ms    40 ms  ae-6.pat1.che.yahoo.com [216.115.96.81] \\r\\n 10    54 ms    54 ms    55 ms  ae-7.pat2.nez.yahoo.com [216.115.104.126] \\r\\n 11    54 ms    77 ms    55 ms  et-18-1-0.msr1.ne1.yahoo.com [216.115.105.31] \\r\\n 12    61 ms    61 ms    66 ms  et-1-1-0.clr2-a-gdc.ne1.yahoo.com [98.138.97.67] \\r\\n 13    53 ms    54 ms    53 ms  et-18-25.fab5-1-gdc.ne1.yahoo.com [98.138.93.3] \\r\\n 14    55 ms    56 ms    55 ms  po-14.bas2-7-prd.ne1.yahoo.com [98.138.240.30] \\r\\n 15    54 ms    55 ms    55 ms  media-router-fp1.prod.media.vip.ne1.yahoo.com [98.138.252.38] \\r\\n\\r\\nTrace complete.\\r\\n', b'')",
+                "hops": 21
+            },
+            "6trace": {
+                "raw": "(b'\\r\\nTracing route to yahoo.com [2001:4998:44:204::100d]\\r\\nover a maximum of 30 hops:\\r\\n\\r\\n  1     3 ms     3 ms     3 ms  2600-6c64-7c7f-f302-c256-27ff-fe45-4db1.dhcp6.chtrptr.net [2600:6c64:7c7f:f302:c256:27ff:fe45:4db1] \\r\\n  2     *        *        *     Request timed out.\\r\\n  3    12 ms    12 ms     *     2001:506:100:103b::5 \\r\\n  4    16 ms    14 ms    15 ms  2001:506:100:1003::4 \\r\\n  5    19 ms    23 ms    22 ms  bbr02oxfrma-tge0-0-0-3.oxfr.ma.charter.com [2001:506:100:250::1] \\r\\n  6    39 ms    31 ms    31 ms  2001:506:100:b::6 \\r\\n  7    33 ms    31 ms    31 ms  bbr01rvsdca-tge0-0-0-1.rvsd.ca.charter.com [2001:506:100:32c::2] \\r\\n  8    30 ms    30 ms    31 ms  2001:4998:f803:3:: \\r\\n  9    53 ms    52 ms    52 ms  ae-6.pat1.che.yahoo.com [2001:4998:f003:8::1] \\r\\n 10    63 ms    64 ms    59 ms  ae-7.pat2.nez.yahoo.com [2001:4998:f000:205::] \\r\\n 11    66 ms    67 ms    68 ms  2001:4998:f000:207::1 \\r\\n 12    58 ms    57 ms    58 ms  2001:4998:44:fe1b::1 \\r\\n 13    61 ms    66 ms    60 ms  v6.e17-1-fab3-1-gdc.ne1.yahoo.com [2001:4998:44:fa02::1] \\r\\n 14    64 ms    60 ms    64 ms  2001:4998:44:d602::1 \\r\\n 15    64 ms    65 ms    64 ms  media-router-fp1.prod.media.vip.ne1.yahoo.com [2001:4998:44:204::100d] \\r\\n\\r\\nTrace complete.\\r\\n', b'')",
+                "hops": 21
+            }
+        },
+        "blogfa.com": {
+            "objects": [
+                "/static/images/blogfa-logo.gif",
+                "/static/images/ghasedak.jpg"
+            ],
+            "dirty": false,
+            "preferred": "/static/images/blogfa-logo.gif",
+            "6Support": false,
+            "results": {
+                "4": [
+                    [
+                        0.0,
+                        1031
+                    ],
+                    [
+                        0.008021116256713867,
+                        1460
+                    ],
+                    [
+                        0.0,
+                        1031
+                    ],
+                    [
+                        0.0009965896606445312,
+                        1460
+                    ],
+                    [
+                        0.0009911060333251953,
+                        1031
+                    ],
+                    [
+                        0.0010156631469726562,
+                        1460
+                    ],
+                    [
+                        0.0019903182983398438,
+                        1031
+                    ],
+                    [
+                        0.0010128021240234375,
+                        1460
+                    ],
+                    [
+                        0.0009860992431640625,
+                        1031
+                    ],
+                    [
+                        0.003016948699951172,
+                        1460
+                    ]
+                ]
+            }
+        },
+        "amazon.com": {
+            "objects": [
+                "https://images-na.ssl-images-amazon.com/images/G/01/gno/sprites/nav-sprite-global_bluebeacon-V3-1x_optimized._CB516556901_.png",
+                "https://images-na.ssl-images-amazon.com/images/G/01/kindle/merch/2017/CAMPAIGN/Holiday/XPL/VX-1239-Holiday_XPL3-4up_GW-Hero-Desktop-1500x300-1X_V2._CB492511789_.jpg",
+                "https://images-na.ssl-images-amazon.com/images/G/01/Gateway/Holiday/2017/Bubbler/Lastminute/Holiday_GW_Bubblers-LMD-1x._CB491155523_.jpg",
+                "https://images-na.ssl-images-amazon.com/images/G/01/Gateway/Holiday/2017/Bubbler/12days/Holiday_GW_Bubblers-Devices-1x._CB491827977_.jpg",
+                "https://images-na.ssl-images-amazon.com/images/G/01/Gateway/Holiday/2017/Bubbler/12days/Holiday_GW_Bubblers-HTL-1x._CB491827978_.jpg",
+                "https://images-na.ssl-images-amazon.com/images/G/01/Gateway/Holiday/2017/Bubbler/12days/Holiday_GW_Bubblers-EGG-1x._CB491827977_.jpg",
+                "https://images-na.ssl-images-amazon.com/images/G/01/Gateway/Holiday/2017/Bubbler/12days/Holiday_GW_Bubblers-HGG-1x._CB491827979_.jpg",
+                "https://images-na.ssl-images-amazon.com/images/G/01/Gateway/Holiday/2017/Bubbler/12days/Holiday_GW_Bubblers-Kindle-1x._CB491827979_.jpg",
+                "https://images-na.ssl-images-amazon.com/images/G/01/amazonui/loading/loading-4x._CB391853216_.gif",
+                "https://m.media-amazon.com/images/G/01/kindle-content-smeghn/GB1215SimonSchuster/KCD-1606_GB_SimonSchuster_Email-CorpEmail_500x500._CB492551036__AC_SY200_.jpg",
+                "https://images-na.ssl-images-amazon.com/images/I/416ArPn6qLL.__AC_SY200_.jpg",
+                "https://images-na.ssl-images-amazon.com/images/I/41MnQtPHBhL.__AC_SY200_.jpg",
+                "https://images-na.ssl-images-amazon.com/images/I/41OvJ%2BwolbL.__AC_SY200_.jpg",
+                "https://images-na.ssl-images-amazon.com/images/I/41xEcV-nV8L.__AC_SY200_.jpg",
+                "https://images-na.ssl-images-amazon.com/images/I/51zhpG1hnCL.__AC_SY200_.jpg",
+                "https://images-na.ssl-images-amazon.com/images/I/51K9wI4ISUL.__AC_SY200_.jpg",
+                "https://images-na.ssl-images-amazon.com/images/G/01/amazonui/loading/loading-4x._CB391853216_.gif",
+                "https://images-na.ssl-images-amazon.com/images/I/51TFnR7AtGL.__AC_SY200_.jpg",
+                "https://images-na.ssl-images-amazon.com/images/I/41vQqNH7zQL.__AC_SY200_.jpg",
+                "https://images-na.ssl-images-amazon.com/images/I/51cAPzeEGPL.__AC_SY200_.jpg",
+                "https://images-na.ssl-images-amazon.com/images/I/51syqGPcCmL.__AC_SY200_.jpg",
+                "https://images-na.ssl-images-amazon.com/images/I/31zq8nYCjUL.__AC_SY200_.jpg",
+                "https://images-na.ssl-images-amazon.com/images/I/61Ho1QPL1aL._SL1000__AC_SY200_.jpg",
+                "https://images-na.ssl-images-amazon.com/images/I/41iz5Tw82IL.__AC_SY200_.jpg",
+                "https://images-na.ssl-images-amazon.com/images/G/01/amazonui/loading/loading-4x._CB391853216_.gif",
+                "https://images-na.ssl-images-amazon.com/images/G/01/Amazon-Basics/Holiday/gifts_desktop-bb_440x200._CB493690206_.jpg",
+                "https://images-na.ssl-images-amazon.com/images/G/01/img17/events/lmd/1085032_gw_bb_en_1x._CB492447472_.jpg",
+                "https://images-na.ssl-images-amazon.com/images/I/91mSHaL6oEL._AC_SY200_.jpg",
+                "https://images-na.ssl-images-amazon.com/images/I/71TgBgvJoNL._AC_SY200_.jpg",
+                "https://images-na.ssl-images-amazon.com/images/I/71Jal6zz7gL._AC_SY200_.jpg",
+                "https://images-na.ssl-images-amazon.com/images/I/91vhuTT7HvL._AC_SY200_.jpg",
+                "https://images-na.ssl-images-amazon.com/images/I/91ZWRgwjg-L._AC_SY200_.jpg",
+                "https://images-na.ssl-images-amazon.com/images/I/91TPmmUT5UL._AC_SY200_.jpg",
+                "https://images-na.ssl-images-amazon.com/images/I/91fN4XbhgPL._AC_SY200_.jpg",
+                "https://images-na.ssl-images-amazon.com/images/G/01/US-hq/2017/img/Toys_Internet/XCM_1081866_Manual_1150x323_1081866_toys_htl_v2_Holiday17_GW_DesktopEditorial_1150x323_jpg_HTL2017_Holiday_Gateway_Wave1._CB493283280_.jpg",
+                "https://images-na.ssl-images-amazon.com/images/I/51qvh4MALwL._AC_SY200_.jpg",
+                "https://images-na.ssl-images-amazon.com/images/I/714cdOsXnzL._AC_SY200_.jpg",
+                "https://images-na.ssl-images-amazon.com/images/I/51nQKQZWR-L._AC_SY200_.jpg",
+                "https://images-na.ssl-images-amazon.com/images/I/51i3dHT2YCL._AC_SY200_.jpg",
+                "https://images-na.ssl-images-amazon.com/images/I/71gU40iqu5L._AC_SY200_.jpg",
+                "https://images-na.ssl-images-amazon.com/images/I/91Ey0+6N-LL._AC_SY200_.jpg",
+                "https://images-na.ssl-images-amazon.com/images/I/81z74s8HrfL._AC_SY200_.jpg",
+                "https://images-na.ssl-images-amazon.com/images/G/01/img17/events/lmd/1085032_gw_right_rail_en_1x._CB492446061_.jpg",
+                "https://images-na.ssl-images-amazon.com/images/G/01/kindle/merch/2017/CAMPAIGN/Holiday/AUCC/VX-1239-Holiday_ESH_80_GW-Sidekick-264x350-1X._CB492108799_.jpg",
+                "https://images-na.ssl-images-amazon.com/images/G/01/US-hq/2017/img/Consumer_Electronics/XCM_1080591_Manual_440x200_1080591_egg_gwbb_under100_holiday_GW_DesktopBillboard_440x200_jpg_Gateway_Billboard_P4486._CB493787484_.jpg",
+                "https://images-na.ssl-images-amazon.com/images/G/01/US-hq/2017/img/Events/XCM_1088160_Manual_440x200_1088160_us_events_bowl_holiday17_GW_DBB_440x200_jpg_NPA_GW_Billboard_ASIN_Refresh_12DOD._CB492290422_.jpg",
+                "https://images-na.ssl-images-amazon.com/images/I/91z5XAdxFAL._AC_SY200_.jpg",
+                "https://images-na.ssl-images-amazon.com/images/I/91DYh3DwiOL._AC_SY200_.jpg",
+                "https://images-na.ssl-images-amazon.com/images/I/81fE70hd+jL._AC_SY200_.jpg",
+                "https://images-na.ssl-images-amazon.com/images/I/71ajMIgbMtL._AC_SY200_.jpg",
+                "https://images-na.ssl-images-amazon.com/images/I/71lWLy-xPJL._AC_SY200_.jpg",
+                "https://images-na.ssl-images-amazon.com/images/I/613faKDRR2L._AC_SY200_.jpg",
+                "https://images-na.ssl-images-amazon.com/images/I/9178Dj4c74L._AC_SY200_.jpg",
+                "https://images-na.ssl-images-amazon.com/images/I/91SF0Tzmv4L._AC_SY200_.jpg",
+                "https://images-na.ssl-images-amazon.com/images/I/811yOOvyw6L._AC_SY200_.jpg",
+                "https://images-na.ssl-images-amazon.com/images/I/71y3rzfuUlL._AC_SY200_.jpg",
+                "https://images-na.ssl-images-amazon.com/images/I/716BkYCMxCL._AC_SY200_.jpg",
+                "https://images-na.ssl-images-amazon.com/images/I/61ux1cU49XL._AC_SY200_.jpg",
+                "https://images-na.ssl-images-amazon.com/images/I/71kwENuZnbL._AC_SY200_.jpg",
+                "https://images-na.ssl-images-amazon.com/images/I/41tFi8KwoLL._AC_SY200_.jpg",
+                "https://images-na.ssl-images-amazon.com/images/G/01/Gateway/Takeovers/OFT2017/Holiday17_OFT2017_GW_DesktopBillboard_440x200_Techie._CB493689426_.jpg",
+                "https://images-na.ssl-images-amazon.com/images/G/01/US-hq/2017/img/Toys_Internet/XCM_1081866_Manual_440x200_1081866_toys_htl_gw_v6_Holiday17_GW_880x400_jpg_HTL2017_Holiday_Gateway_Wave1._CB493283284_.jpg",
+                "https://images-na.ssl-images-amazon.com/images/I/51cWYOv2s4L._AC_SY200_.jpg",
+                "https://images-na.ssl-images-amazon.com/images/I/41kVO1HjrgL._AC_SY200_.jpg",
+                "https://images-na.ssl-images-amazon.com/images/I/517fXkvwdZL._AC_SY200_.jpg",
+                "https://images-na.ssl-images-amazon.com/images/I/71moQ8RFA5L._AC_SY200_.jpg",
+                "https://images-na.ssl-images-amazon.com/images/I/61TVn2p8x+L._AC_SY200_.jpg",
+                "https://images-na.ssl-images-amazon.com/images/I/71F+JVNKngL._AC_SY200_.jpg",
+                "https://images-na.ssl-images-amazon.com/images/I/81UTyubxIDL._AC_SY200_.jpg",
+                "https://images-na.ssl-images-amazon.com/images/G/01/digital/music/merch/2017/WeeklyBuild/121517/BFCM17_GW_UPDATED_DesktopTRR_Eminem_1x.jpg",
+                "https://images-na.ssl-images-amazon.com/images/G/01/US-hq/2017/img/Toys_Internet/XCM_1081868_Manual_264x350_1081868_us_toys_internet_htl2017_holiday17_gw_tallrightrail_264x350_2_jpg_HTL2017_Holiday_Wave2_Gateway._CB493659213_.jpg",
+                "https://images-na.ssl-images-amazon.com/images/G/01/kindle/merch/2017/CAMPAIGN/Holiday/KET/VX-1239-Holiday_KET7_GW-Sidekick-264x350-1X._CB492078796_.jpg",
+                "https://images-na.ssl-images-amazon.com/images/G/01/kindle/merch/2017/CAMPAIGN/Holiday/Fire/VX-1239-Holiday_Fire8_GW-Sidekick-264x350-1X._CB492078132_.jpg",
+                "https://images-na.ssl-images-amazon.com/images/G/01/personalization/ybh/loading-4x-gray._CB317976265_.gif",
+                "http://g-ec2.images-amazon.com/images/G/01/social/api-share/amazon_logo_500500._V323939215_.png"
+            ],
+            "dirty": false,
+            "preferred": "/https://images-na.ssl-images-amazon.com/images/G/01/gno/sprites/nav-sprite-global_bluebeacon-V3-1x_optimized._CB516556901_.png",
+            "6Support": false,
+            "results": {
+                "4": [
+                    [
+                        0.02403402328491211,
+                        314
+                    ],
+                    [
+                        0.0010037422180175781,
+                        179
+                    ],
+                    [
+                        0.02624344825744629,
+                        314
+                    ],
+                    [
+                        0.0020017623901367188,
+                        179
+                    ],
+                    [
+                        0.02175450325012207,
+                        314
+                    ],
+                    [
+                        0.002001523971557617,
+                        179
+                    ],
+                    [
+                        0.023988723754882812,
+                        314
+                    ],
+                    [
+                        0.0010008811950683594,
+                        179
+                    ],
+                    [
+                        0.024036884307861328,
+                        314
+                    ],
+                    [
+                        0.0009872913360595703,
+                        179
+                    ]
+                ]
+            }
+        },
+        "sina.com.cn": {
+            "objects": [
+                "//i0.sinaimg.cn/cha/images/c.gif",
+                "http://n.sinaimg.cn/news/20171124/-PwW-fypatmw5929816.jpg",
+                "http://n.sinaimg.cn/news/20161214/WCVU-fxypunk6627147.jpg",
+                "http://n.sinaimg.cn/tech/transform/w116h80/20171214/p9uS-fypsqiz7675731.png",
+                "//n.sinaimg.cn/news/w340h239/20171215/4lfd-fypsqka0236306.jpg",
+                "//n.sinaimg.cn/news/transform/w105h70/20171215/GmRT-fypsqiz9387573.jpg",
+                "//n.sinaimg.cn/news/w340h239/20171215/V5yD-fypsqka0242301.jpg",
+                "http://n.sinaimg.cn/www/transform/w105h70/20171215/sW8V-fypsqka0753549.jpg",
+                "http://n.sinaimg.cn/www/transform/w105h70/20171215/X5Kb-fypsqka0846474.jpg",
+                "http://n.sinaimg.cn/www/transform/w105h70/20171215/7WTR-fypsqka0849880.jpg",
+                "http://n.sinaimg.cn/news/transform/w105h70/20171215/CU5V-fypsqka0246575.jpg",
+                "http://n.sinaimg.cn/sports/transform/w105h70/20171216/DDac-fypsqka2019275.jpg",
+                "http://n.sinaimg.cn/ent/transform/w105h70/20171215/UYqP-fypsqiz9914255.jpg",
+                "http://n.sinaimg.cn/video/transform/w105h90/20171215/Bxzv-fypsqka0609164.jpg",
+                "http://n.sinaimg.cn/sports/transform/w105h90/20171214/Umw4-fypsqiz6324401.jpg",
+                "http://n.sinaimg.cn/ent/transform/20171105/m7tm-fynmzrs7231921.jpg",
+                "http://n.sinaimg.cn/sports/transform/w105h90/20171213/uKaN-fypsqiz3657521.jpg",
+                "http://n.sinaimg.cn/news/w105h90/20171212/WcaN-fypnsiq0562126.jpg",
+                "http://n.sinaimg.cn/news/w105h90/20171212/ZPdN-fypnsiq0573877.jpg",
+                "//www.sinaimg.cn/home/main/blk/d.gif",
+                "//www.sinaimg.cn/home/main/blk/d.gif",
+                "//n.sinaimg.cn/ent/transform/w105h70/20171215/orou-fypsqiz9305229.jpg",
+                "//n.sinaimg.cn/tech/w475h268/20171208/-Cvf-fypnsin8711329.gif",
+                "//n.sinaimg.cn/kandian/transform/20170620/_PTI-fyhfxph4388828.jpg",
+                "//n.sinaimg.cn/fashion/w105h70/20171214/vICA-fypsqiz6430604.jpg",
+                "//n.sinaimg.cn/news/transform/w105h70/20171215/Fhr3-fypsqiz9401353.jpg",
+                "//n.sinaimg.cn/sports/transform/w105h70/20171214/JrKp-fypsqiz7427503.jpg",
+                "//n.sinaimg.cn/ent/transform/w105h70/20171215/phm1-fypsqka0601639.jpg",
+                "//n.sinaimg.cn/sports/transform/w105h70/20171214/qhyy-fypsqiz7434330.jpg",
+                "http://n.sinaimg.cn/sports/transform/w105h70/20171216/tDry-fypsqka2022953.jpg",
+                "//n.sinaimg.cn/sports/transform/w164h110/20171215/LZWa-fypsqiz9938685.jpg",
+                "//www.sinaimg.cn/home/main/blk/d.gif",
+                "//n.sinaimg.cn/auto/transform/w210h140/20171215/KnHg-fypsqka1580759.jpg",
+                "//n.sinaimg.cn/auto/transform/w210h140/20171215/-8wL-fypsqka1581830.jpg",
+                "//n.sinaimg.cn/auto/transform/w210h140/20171211/a554-fypnsip8139771.jpg",
+                "//n.sinaimg.cn/auto/transform/w171h94/20171213/ypK7-fypsqiz3459652.jpg",
+                "//n.sinaimg.cn/auto/transform/20171117/I9eb-fynwnwt7164124.jpg",
+                "//n.sinaimg.cn/auto/transform/w171h94/20171213/eqfH-fypsqiz3458392.jpg",
+                "//n.sinaimg.cn/auto/transform/w171h94/20171213/dAo5-fypsqiz3457888.jpg",
+                "//n.sinaimg.cn/auto/transform/w171h94/20171213/lA9C-fypsqiz3457195.jpg",
+                "//n.sinaimg.cn/auto/transform/w171h94/20171213/C_J4-fypsqiz3456319.jpg",
+                "http://www.sinaimg.cn/home/2017/1215/U996P30DT20171215094227.jpg",
+                "http://www.sinaimg.cn/home/2017/1215/U996P30DT20171215094254.png",
+                "http://www.sinaimg.cn/home/2017/1215/U996P30DT20171215094342.png",
+                "http://www.sinaimg.cn/home/2017/1215/U996P30DT20171215152227.jpg",
+                "//www.sinaimg.cn/home/main/blk/d.gif",
+                "//www.sinaimg.cn/home/main/blk/d.gif",
+                "//image.sinajs.cn/newchart/small/t/sh000001.gif",
+                "//www.sinaimg.cn/home/main/blk/d.gif",
+                "//www.sinaimg.cn/home/main/blk/d.gif",
+                "//www.sinaimg.cn/home/main/blk/d.gif",
+                "//www.sinaimg.cn/home/main/blk/d.gif",
+                "//www.sinaimg.cn/home/main/blk/d.gif",
+                "//www.sinaimg.cn/home/main/blk/d.gif",
+                "//www.sinaimg.cn/home/main/blk/d.gif",
+                "//www.sinaimg.cn/home/main/blk/d.gif",
+                "//www.sinaimg.cn/home/main/blk/d.gif",
+                "//www.sinaimg.cn/home/main/blk/d.gif",
+                "//www.sinaimg.cn/home/main/blk/d.gif",
+                "//www.sinaimg.cn/home/main/blk/d.gif",
+                "//www.sinaimg.cn/home/main/blk/d.gif",
+                "//www.sinaimg.cn/home/main/blk/d.gif",
+                "//www.sinaimg.cn/home/main/blk/d.gif",
+                "//www.sinaimg.cn/home/main/blk/d.gif",
+                "//www.sinaimg.cn/home/main/blk/d.gif",
+                "//www.sinaimg.cn/home/main/blk/d.gif",
+                "//www.sinaimg.cn/home/main/blk/d.gif",
+                "//www.sinaimg.cn/home/main/blk/d.gif",
+                "//www.sinaimg.cn/home/main/blk/d.gif",
+                "//www.sinaimg.cn/home/main/blk/d.gif",
+                "//www.sinaimg.cn/home/main/blk/d.gif",
+                "http://n.sinaimg.cn/tech/transform/w105h70/20171215/VdVJ-fypsqiz9359549.jpg",
+                "//n.sinaimg.cn/games/w105h70/20171215/pK2z-fypsqiz9828352.jpg",
+                "//n.sinaimg.cn/games/82f31f45/20171214/105.jpg",
+                "//n.sinaimg.cn/games/82f31f45/20171211/23.jpg",
+                "//n.sinaimg.cn/games/82f31f45/20171215/213.jpg",
+                "//n.sinaimg.cn/97973/w105h70/20171214/pZgR-fypsqiz6846178.jpg",
+                "http://www.sinaimg.cn/home/main/blk/d.gif",
+                "//www.sinaimg.cn/home/main/blk/d.gif",
+                "//www.sinaimg.cn/home/main/blk/d.gif",
+                "//www.sinaimg.cn/home/main/blk/d.gif",
+                "//www.sinaimg.cn/home/main/blk/d.gif",
+                "//www.sinaimg.cn/home/main/blk/d.gif",
+                "//www.sinaimg.cn/home/main/blk/d.gif",
+                "//www.sinaimg.cn/home/main/blk/d.gif",
+                "//www.sinaimg.cn/home/main/blk/d.gif",
+                "//www.sinaimg.cn/home/main/blk/d.gif",
+                "//www.sinaimg.cn/home/main/blk/d.gif",
+                "//www.sinaimg.cn/home/main/blk/d.gif",
+                "//www.sinaimg.cn/home/main/blk/d.gif",
+                "//www.sinaimg.cn/home/main/blk/d.gif",
+                "//n.sinaimg.cn/games/w105h70/20171215/pOlW-fypsqiz9830242.jpg",
+                "//n.sinaimg.cn/games/82f31f45/20171214/105.jpg",
+                "//n.sinaimg.cn/games/82f31f45/20171214/1.jpg",
+                "//n.sinaimg.cn/games/82f31f45/20171214/2.jpg",
+                "//n.sinaimg.cn/games/20171128/uNDN-fypatmu9903864.png",
+                "//www.sinaimg.cn/home/main/blk/d.gif",
+                "//www.sinaimg.cn/home/main/blk/d.gif",
+                "http://src.leju.com/imp/imp/deal/a3/c4/b/6221eb61b58f7a3675f855e1862_p24_mk24.jpg",
+                "http://i13.esfimg.com/imp/5815f7c2ef4000fcde89036aa8f891e9_osfcc653.jpg",
+                "http://src.leju.com/imp/imp/deal/3d/5f/a/f4859f663aebfe1b21310245124_p24_mk24.jpg",
+                "//www.sinaimg.cn/home/main/blk/d.gif",
+                "//www.sinaimg.cn/home/main/blk/d.gif",
+                "//www.sinaimg.cn/home/main/blk/d.gif",
+                "//www.sinaimg.cn/home/main/blk/d.gif",
+                "//www.sinaimg.cn/home/main/blk/d.gif",
+                "//www.sinaimg.cn/home/main/blk/d.gif",
+                "//www.sinaimg.cn/home/main/blk/d.gif",
+                "//www.sinaimg.cn/home/main/blk/d.gif",
+                "//www.sinaimg.cn/home/main/blk/d.gif",
+                "//www.sinaimg.cn/home/main/blk/d.gif",
+                "//www.sinaimg.cn/home/main/blk/d.gif",
+                "//www.sinaimg.cn/home/main/blk/d.gif",
+                "//www.sinaimg.cn/home/main/blk/d.gif",
+                "//www.sinaimg.cn/home/main/blk/d.gif",
+                "//www.sinaimg.cn/home/main/blk/d.gif",
+                "//www.sinaimg.cn/home/main/blk/d.gif",
+                "//www.sinaimg.cn/home/main/blk/d.gif",
+                "//www.sinaimg.cn/home/main/blk/d.gif",
+                "//www.sinaimg.cn/home/main/blk/d.gif",
+                "//www.sinaimg.cn/home/main/blk/d.gif",
+                "//www.sinaimg.cn/home/main/blk/d.gif",
+                "//www.sinaimg.cn/home/main/blk/d.gif",
+                "//www.sinaimg.cn/home/main/blk/d.gif",
+                "http://www.sinaimg.cn/home/main/blk/d.gif",
+                "http://www.sinaimg.cn/home/main/blk/d.gif",
+                "http://www.sinaimg.cn/home/main/blk/d.gif",
+                "http://www.sinaimg.cn/home/main/blk/d.gif",
+                "http://www.sinaimg.cn/home/main/blk/d.gif",
+                "//www.sinaimg.cn/home/main/blk/d.gif",
+                "//www.sinaimg.cn/home/main/blk/d.gif",
+                "//www.sinaimg.cn/home/main/blk/d.gif",
+                "//www.sinaimg.cn/home/main/blk/d.gif",
+                "//n.sinaimg.cn/news/w65h65/20171211/st5r-fypnsip6399046.jpg",
+                "//www.sinaimg.cn/home/main/blk/d.gif",
+                "//www.sinaimg.cn/home/main/blk/d.gif",
+                "//www.sinaimg.cn/home/main/blk/d.gif",
+                "//www.sinaimg.cn/home/main/blk/d.gif",
+                "//www.sinaimg.cn/home/main/blk/d.gif",
+                "//www.sinaimg.cn/home/main/blk/d.gif",
+                "//www.sinaimg.cn/home/main/blk/d.gif",
+                "//www.sinaimg.cn/home/main/blk/d.gif",
+                "//www.sinaimg.cn/home/main/blk/d.gif",
+                "//www.sinaimg.cn/home/main/blk/d.gif",
+                "//www.sinaimg.cn/home/main/blk/d.gif",
+                "//www.sinaimg.cn/home/main/blk/d.gif",
+                "//www.sinaimg.cn/home/main/blk/d.gif",
+                "//www.sinaimg.cn/home/main/blk/d.gif",
+                "//www.sinaimg.cn/home/main/blk/d.gif",
+                "//www.sinaimg.cn/home/main/blk/d.gif",
+                "//www.sinaimg.cn/home/main/blk/d.gif",
+                "//www.sinaimg.cn/home/main/blk/d.gif",
+                "//www.sinaimg.cn/home/main/blk/d.gif",
+                "//www.sinaimg.cn/home/main/blk/d.gif",
+                "//www.sinaimg.cn/home/main/blk/d.gif",
+                "//www.sinaimg.cn/home/main/blk/d.gif",
+                "//www.sinaimg.cn/home/main/blk/d.gif",
+                "//www.sinaimg.cn/home/main/blk/d.gif",
+                "//www.sinaimg.cn/home/main/blk/d.gif",
+                "//www.sinaimg.cn/home/main/blk/d.gif",
+                "//www.sinaimg.cn/home/main/blk/d.gif",
+                "//www.sinaimg.cn/home/main/blk/d.gif",
+                "//www.sinaimg.cn/home/main/blk/d.gif",
+                "//www.sinaimg.cn/home/main/blk/d.gif",
+                "//www.sinaimg.cn/home/main/blk/d.gif",
+                "//www.sinaimg.cn/home/main/blk/d.gif",
+                "//www.sinaimg.cn/home/main/blk/d.gif",
+                "//www.sinaimg.cn/home/main/blk/d.gif",
+                "//www.sinaimg.cn/home/main/blk/d.gif",
+                "//i3.sinaimg.cn/dy/deco/2013/0305/d.gif",
+                "//i3.sinaimg.cn/dy/deco/2013/0305/d.gif",
+                "//i3.sinaimg.cn/dy/deco/2013/0305/d.gif",
+                "//i3.sinaimg.cn/dy/deco/2013/0305/d.gif",
+                "//i3.sinaimg.cn/dy/deco/2013/0305/d.gif",
+                "//i3.sinaimg.cn/dy/deco/2013/0305/d.gif",
+                "//i3.sinaimg.cn/dy/deco/2013/0305/d.gif",
+                "//i3.sinaimg.cn/dy/deco/2013/0305/d.gif",
+                "//i3.sinaimg.cn/dy/deco/2013/0305/d.gif",
+                "//i1.sinaimg.cn/dy/deco/2013/0312/logo.png",
+                "//i3.sinaimg.cn/home/2013/0331/U586P30DT20130331093840.png"
+            ],
+            "dirty": false,
+            "preferred": "/http://n.sinaimg.cn/news/20171124/-PwW-fypatmw5929816.jpg",
+            "6Support": false,
+            "results": {
+                "4": [
+                    [
+                        0.23433232307434082,
+                        537
+                    ],
+                    [
+                        0.23339557647705078,
+                        537
+                    ],
+                    [
+                        0.23397445678710938,
+                        537
+                    ],
+                    [
+                        0.2346363067626953,
+                        537
+                    ],
+                    [
+                        0.23429155349731445,
+                        537
+                    ],
+                    [
+                        0.23380398750305176,
+                        537
+                    ],
+                    [
+                        0.23530220985412598,
+                        537
+                    ],
+                    [
+                        0.2352313995361328,
+                        537
+                    ],
+                    [
+                        0.2342677116394043,
+                        537
+                    ],
+                    [
+                        0.23425865173339844,
+                        537
+                    ]
+                ]
+            }
+        }
+    },
+    "progress": [
+        "A",
+        "C",
+        "D",
+        "T"
+    ]
+}

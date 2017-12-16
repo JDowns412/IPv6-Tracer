@@ -1,6 +1,7 @@
-import os, json, pprint, subprocess, argparse
+import os, json, pprint, subprocess, argparse, pdb
 
 def reader(length, experiment):
+    print("EXPERIMENT: ", experiment)
     with open("../Logs/Experiment %s.log" % str(experiment), 'a') as log:
         goalLength = length
         location = "../Results/Analyzed/"
@@ -13,13 +14,14 @@ def reader(length, experiment):
             data = json.load(f)
         
         print("\n______________________cleaner.py______________________\n")
-        print("read in  data dictionary from ", location+"/" +file)
+        print("read in  data dictionary from %s" % str(location+"/" +file))
         log.write("\n______________________cleaner.py______________________\n")
-        log.write("read in  data dictionary from ", location+"/" +file)
+        log.write("read in  data dictionary from %s" % str(location+"/" +file))
         return(data)
 
 def clean(inData, experiment):
-    with open("../Logs/Experiment %s.log" % str(experiment), 'a') as log:
+    # pdb.set_trace()
+    with open("../../Logs/Experiment %s.log" % str(experiment), 'a') as log:
         data = inData
         count = 0
         # clean the objects found for every domain
@@ -27,7 +29,7 @@ def clean(inData, experiment):
             # to organize the printing output
             if (count % 100 == 0):
                 print()
-                log.write()
+                log.write("\n")
             data["valid"][domain]["dirty"] = True
             for obj in val["objects"]:
                 # best case scenario: we have an object that's in a subdirectory of 
@@ -37,7 +39,7 @@ def clean(inData, experiment):
                     data["valid"][domain]["preferred"] = obj
                     data["valid"][domain]["dirty"] = False
                     print("1", end='')
-                    log.write("1", end='')
+                    log.write("1")
                     break
                 # second best case scenario, this is likely the same scenario as above, 
                 # just missing a / from the parsing process (HTML is sloppy)
@@ -45,14 +47,14 @@ def clean(inData, experiment):
                     data["valid"][domain]["preferred"] = "/"+ obj
                     data["valid"][domain]["dirty"] = False
                     print("2", end='')
-                    log.write("2", end='')
+                    log.write("2")
                     break
                 # third best scenario: just like the first, just with "./ at the beginning"
                 if (obj[0] == "." and obj[1] == "/" and obj[2].isalpha()):
                     data["valid"][domain]["preferred"] = obj[1:]
                     data["valid"][domain]["dirty"] = False
                     print("3", end='')
-                    log.write("3", end='')
+                    log.write("3")
                     break
                 # fourth case best scenario: the object is a full URL that contains the domain name, 
                 # so it's probably from the domain itself
@@ -60,7 +62,7 @@ def clean(inData, experiment):
                     data["valid"][domain]["preferred"] = obj
                     data["valid"][domain]["dirty"] = False
                     print("4", end='')
-                    log.write("4", end='')
+                    log.write("4")
                     break
             count += 1
 
@@ -76,7 +78,7 @@ def clean(inData, experiment):
                         data["valid"][domain]["preferred"] = obj
                         data["valid"][domain]["dirty"] = False
                         print("   5   ", end='')
-                        log.write("   5   ", end='')
+                        log.write("   5   ")
                         break
 
         # notify of any remaining dirty domains 
@@ -94,7 +96,8 @@ def clean(inData, experiment):
         return data
 
 def dumper(data, goalLength, experiment):
-    with open("../Logs/Experiment %s.log" % str(experiment), 'a') as log:
+    # pdb.set_trace()
+    with open("../../Logs/Experiment %s.log" % str(experiment), 'a') as log:
 
         fileName = ("results")
         os.chdir('../Cleaned')
@@ -110,7 +113,7 @@ def dumper(data, goalLength, experiment):
         fileName += ".json"
 
         print("\ndumping results to ../Results/Cleaned", fileName)
-        log.write("\ndumping results to ../Results/Cleaned", fileName)
+        log.write("\ndumping results to ../Results/Cleaned%s" % fileName)
 
         with open(fileName, 'w') as fp:
             json.dump(data, fp, indent=4)

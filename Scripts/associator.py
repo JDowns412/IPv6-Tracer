@@ -122,7 +122,7 @@ def obj_associator(sites, experiment):
 
                     if (len(objects) == 0):
                         print("Couldn't find any objects for ", domain)
-                        log.write("Couldn't find any objects for ", domain)
+                        log.write("Couldn't find any objects for %s" % domain)
                         data["zeros"].append(sites[dom])
                     else:
                         print("Found %d objects for %s" % (len(objects), domain))
@@ -157,7 +157,7 @@ def dumper(data, goalLength, experiment):
         fileName += ".json"
 
         print("\ndumping results to ../Results/Associated/", fileName)
-        log.write("\ndumping results to ../Results/Associated/", fileName)
+        log.write("\ndumping results to ../Results/Associated/%s" % fileName)
 
         with open(fileName, 'w') as fp:
             json.dump(data, fp, indent=4)

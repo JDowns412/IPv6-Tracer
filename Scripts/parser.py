@@ -60,5 +60,5 @@ def parse(length):
 
 
 if __name__ == "__main__":
-    goalLength = 100
+    goalLength = 5
     parse(goalLength)

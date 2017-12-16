@@ -15,12 +15,12 @@ def reader(length, experiment):
         print("\n______________________analyzer.py______________________\n")
         log.write("\n______________________analyzer.py______________________\n")
         print("read in  data dictionary from ", location+file)
-        log.write("read in  data dictionary from ", location+file)
+        log.write("read in  data dictionary from %s" % str(location+file))
         return(data)
 
 
 def dns_looker(inData, experiment):
-    with open("../Logs/Experiment %s.log" % str(experiment), 'a') as log:
+    with open("../../Logs/Experiment %s.log" % str(experiment), 'a') as log:
         data = inData
         count = 0
 
@@ -57,7 +57,7 @@ def dns_looker(inData, experiment):
 
 
 def get(domain, data, version, experiment):
-    with open("../Logs/Experiment %s.log" % str(experiment), 'a') as log:
+    with open("../../Logs/Experiment %s.log" % str(experiment), 'a') as log:
         # initialize the proper socket version based off of the passed in version
         if (version == 4):
             sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
@@ -97,13 +97,13 @@ def get(domain, data, version, experiment):
         while(cold):
             if (count > 500):
                 # only way to stop an infinite loop... 500 requests is probably out of slow start
-                cold = True
-                print("Had to hard-code a break out of slow start")
-                log.write("Had to hard-code a break out of slow start")
+                cold = False
+                print("\tHad to hard-code a break out of slow start")
+                log.write("\tHad to hard-code a break out of slow start")
 
             if (count % 100 == 0):
                 # print("Leaving slow-start...", end='')
-                log.write("Leaving slow-start...", end='')
+                log.write("\tLeaving slow-start...")
             # receive the object
             sock.send(message.encode('utf-8'))
             #record the time the request takes
@@ -146,10 +146,10 @@ def get(domain, data, version, experiment):
                             slower += 1
 
                     # if the majority of requests are positive indications, we're out of cold start
-                    if (thresh >= 3 and slower  >= 2):
+                    if (thresh >= 3 and slower >= 2):
                         cold = False
-                        print("...done leaving slow start")
-                        log.write("...done leaving slow start")
+                        print("\t...done leaving slow start")
+                        log.write("\t...done leaving slow start")
 
         # run this for 10 iterations for average speeds
         iterations = 10
@@ -217,7 +217,7 @@ def get(domain, data, version, experiment):
 
 
 def trace(inData, iterations, experiment):
-    with open("../Logs/Experiment %s.log" % str(experiment), 'a') as log:
+    with open("../../Logs/Experiment %s.log" % str(experiment), 'a') as log:
         data = inData
 
         # do traces for every domain
@@ -225,36 +225,43 @@ def trace(inData, iterations, experiment):
         for domain, val in data["valid"].items():
             if "preferred" in data["valid"][domain]:
                 count += 1
+                # if(1 == 1):
                 try:
                     data["valid"][domain]["results"] = {4 : []}
                     # run connections for each IPv4
                     print("Tracing %d/%d %s with IPv4" % (count, len(data["valid"]), domain))
                     log.write("Tracing %d/%d %s with IPv4" % (count, len(data["valid"]), domain))
-                    results = get(domain, data, 4)
+                    results = get(domain, data, 4, experiment)
                     for result in results:
                         data["valid"][domain]["results"][4].append(result)
                     
                     # run connections for IPv6 (if the domain has it)
                     if (data["valid"][domain]["6Support"]):
                         data["valid"][domain]["results"][6] = []
-                        print("Tracing %s with IPv6" % (domain))
+                        print("Tracing %s with IPv6" % (domain), end='')
                         log.write("Tracing %s with IPv6" % (domain))
 
                         # we need to calibrate the IPv6 first (this is automatic with IPv4, 
                         # but not 6 since python's socket module was throwing errors at me)
                         # data["valid"][domain]["best6"] = calibrate6(data, domain)
-                        results = get(domain, data, 6)
+                        results = get(domain, data, 6, experiment)
                         for result in results:
                             data["valid"][domain]["results"][6].append(result)
 
                         # collect some basic trace route data on the sites that support both v4 and v6
                         # IPv4 trace
+                        print("...IPv4 trace route...", end='')
+                        log.write("Performing IPv4 trace route")
+
                         proc = subprocess.Popen(["tracert", "-4", domain], stdout=subprocess.PIPE, stderr=subprocess.PIPE, bufsize=1)
                         res = str(proc.communicate())
                         data["valid"][domain]["4trace"] = {"raw" : res, "hops" : 0}
                         # count the number of hops in the trace route
                         for line in res.split("\\r\\n"): 
                             data["valid"][domain]["4trace"]["hops"] += int("timed out" not in line)
+
+                        print("IPv6 trace route.")
+                        log.write("Performing IPv6 trace route")
 
                         # IPv6 trace
                         proc = subprocess.Popen(["tracert", "-6", domain], stdout=subprocess.PIPE, stderr=subprocess.PIPE, bufsize=1)
@@ -284,7 +291,7 @@ def trace(inData, iterations, experiment):
 
 
 def dumper(data, goalLength, experiment):
-    with open("../Logs/Experiment %s.log" % str(experiment), 'a') as log:
+    with open("../../Logs/Experiment %s.log" % str(experiment), 'a') as log:
         fileName = ("results")
         os.chdir('../Analyzed')
 
@@ -299,7 +306,7 @@ def dumper(data, goalLength, experiment):
         fileName += ".json"
 
         print("\ndumping results to ../Results/Analyzed", fileName)
-        log.write("\ndumping results to ../Results/Analyzed", fileName)
+        log.write("\ndumping results to ../Results/Analyzed%s" % fileName)
 
         with open(fileName, 'w') as fp:
             json.dump(data, fp, indent=4)
