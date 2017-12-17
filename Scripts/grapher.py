@@ -88,6 +88,34 @@ def tgraph(data):
 			f.write(','.join([str(r) for r in row]))
 			f.write('\n')
 
+def tgraph_cdf(data):
+	# csv_results: time, %
+	ipv4_times = []
+	ipv6_times = []
+	for domain in data["valid"]:
+		if "results" in data["valid"][domain]:
+			results = data["valid"][domain]["results"]
+			if "4" in results and results["4"]:
+				for r in results["4"]:
+					ipv4_times.append(r[0])
+			if "6" in results and results["6"]:
+				for r in results["6"]:
+					ipv6_times.append(r[0])
+	ipv4_times.sort()
+	ipv6_times.sort()
+	with open("ipv4_cdf.csv", 'w') as f:
+		for i in range(len(ipv4_times)):
+			time = ipv4_times[i]
+			percent = (i+1) / len(ipv4_times)
+			f.write("{},{}".format(time, percent))
+			f.write('\n')
+	with open("ipv6_cdf.csv", 'w') as f:
+		for i in range(len(ipv6_times)):
+			time = ipv6_times[i]
+			percent = (i+1) / len(ipv6_times)
+			f.write("{},{}".format(time, percent))
+			f.write('\n')
+
 def tstats(data):
 	ipv6 = 0
 	total = 0
@@ -98,8 +126,8 @@ def tstats(data):
 	print("{} / {} = {}".format(ipv6, total, ipv6 / total))
 
 if __name__ == '__main__':
-	with open('../Results/Analyzed/results_A_C_D_T[500]16.json') as data_file:
+	with open('../Results/Analyzed/results_A_C_D_T[500]45.json') as data_file:
 		data = json.load(data_file)
-		jgraph_cdf(data)
+		# jgraph_cdf(data)
 		# tgraph(data)
 		tstats(data)
