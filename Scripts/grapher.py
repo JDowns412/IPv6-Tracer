@@ -95,10 +95,9 @@ def tgraph_cdf(data):
 	for domain in data["valid"]:
 		if "results" in data["valid"][domain]:
 			results = data["valid"][domain]["results"]
-			if "4" in results and results["4"]:
+			if "4" in results and results["4"] and "6" in results and results["6"]:
 				for r in results["4"]:
 					ipv4_times.append(r[0])
-			if "6" in results and results["6"]:
 				for r in results["6"]:
 					ipv6_times.append(r[0])
 	ipv4_times.sort()
