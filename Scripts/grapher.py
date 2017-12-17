@@ -76,12 +76,14 @@ def tgraph(data):
 				ipv4_means = np.mean(results["4"], axis=0)
 				ipv4_time = ipv4_means[0]
 				ipv4_size = ipv4_means[1]
-				ipv4 = (ipv4_size / ipv4_time) / 1024.0 # kb/s
-				ipv6_means = np.mean(results["6"], axis=0)
-				ipv6_time = ipv6_means[0]
-				ipv6_size = ipv6_means[1]
-				ipv6 = (ipv6_size / ipv6_time) / 1024.0 # kb/s
-				csv_results.append([domain, ipv4, ipv6])
+				if ipv4_time != 0:
+					ipv4 = (ipv4_size / ipv4_time) / 1024.0 # kb/s
+					ipv6_means = np.mean(results["6"], axis=0)
+					ipv6_time = ipv6_means[0]
+					ipv6_size = ipv6_means[1]
+					if ipv6_time != 0:
+						ipv6 = (ipv6_size / ipv6_time) / 1024.0 # kb/s
+						csv_results.append([domain, ipv4, ipv6])
 	csv_results.sort(key=lambda x: x[2])
 	with open("comparison.csv", 'w') as f:
 		for row in csv_results:
@@ -97,9 +99,11 @@ def tgraph_cdf(data):
 			results = data["valid"][domain]["results"]
 			if "4" in results and results["4"] and "6" in results and results["6"]:
 				for r in results["4"]:
-					ipv4_times.append(r[0])
+					if r[0] != 0:
+						ipv4_times.append(r[0])
 				for r in results["6"]:
-					ipv6_times.append(r[0])
+					if r[0] != 0:
+						ipv6_times.append(r[0])
 	ipv4_times.sort()
 	ipv6_times.sort()
 	with open("ipv4_cdf.csv", 'w') as f:
@@ -115,6 +119,31 @@ def tgraph_cdf(data):
 			f.write("{},{}".format(time, percent))
 			f.write('\n')
 
+def tchart_hops(data):
+	# csv_results: domain, ipv4 mean time, ipv6 mean time, ipv4 hops, ipv6 hops, diff time, diff hops
+	# diff = ipv4 - ipv6
+	csv_results = []
+	for domain in data["valid"]:
+		if "results" in data["valid"][domain]:
+			results = data["valid"][domain]["results"]
+			if "4" in results and results["4"] and "6" in results and results["6"]:
+				if "4trace" in data["valid"][domain] and "hops" in data["valid"][domain]["4trace"]:
+					if "6trace" in data["valid"][domain] and "hops" in data["valid"][domain]["6trace"]:
+						ipv4_hops = data["valid"][domain]["4trace"]["hops"]
+						ipv6_hops = data["valid"][domain]["6trace"]["hops"]
+						ipv4_means = np.mean(results["4"], axis=0)
+						ipv4_time = ipv4_means[0]
+						if ipv4_time != 0:
+							ipv6_means = np.mean(results["6"], axis=0)
+							ipv6_time = ipv6_means[0]
+							if ipv6_time != 0:
+								csv_results.append([domain, ipv4_time, ipv6_time, ipv4_hops, ipv6_hops, ipv4_time-ipv6_time, ipv4_hops-ipv6_hops])
+	csv_results.sort(key=lambda x: x[5])
+	with open("hops.csv", 'w') as f:
+		for row in csv_results:
+			f.write(','.join([str(r) for r in row]))
+			f.write('\n')
+
 def tstats(data):
 	ipv6 = 0
 	total = 0
@@ -127,6 +156,7 @@ def tstats(data):
 if __name__ == '__main__':
 	with open('../Results/Analyzed/results_A_C_D_T[500]45.json') as data_file:
 		data = json.load(data_file)
-		# jgraph_cdf(data)
 		# tgraph(data)
-		tstats(data)
+		# tgraph_cdf(data)
+		# tstats(data)
+		tchart_hops(data)
